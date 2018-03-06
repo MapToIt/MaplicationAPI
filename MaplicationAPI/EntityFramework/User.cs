@@ -13,6 +13,7 @@ namespace MaplicationAPI.EntityFramework
         public int UserId { get; set; }
 
         public int UserTypeId { get; set; }
+        public string Token { get; set; }
 
         [ForeignKey("UserTypeId")]
         public UserTypes UserType { get; set; }

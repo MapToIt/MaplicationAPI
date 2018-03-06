@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace MaplicationAPI.Migrations
@@ -158,6 +160,46 @@ namespace MaplicationAPI.Migrations
                     b.ToTable("JobPostings");
                 });
 
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Map", b =>
+                {
+                    b.Property<int>("MapId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("EventId");
+
+                    b.Property<byte[]>("Image");
+
+                    b.HasKey("MapId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Map");
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Notes", b =>
+                {
+                    b.Property<int>("NoteId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Major");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Note");
+
+                    b.Property<string>("email");
+
+                    b.HasKey("NoteId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Recruiter", b =>
                 {
                     b.Property<int>("RecruiterId")
@@ -196,6 +238,24 @@ namespace MaplicationAPI.Migrations
                     b.ToTable("State");
                 });
 
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Tables", b =>
+                {
+                    b.Property<int>("TableId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<int>("MapId");
+
+                    b.HasKey("TableId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("MapId");
+
+                    b.ToTable("Tables");
+                });
+
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Tags", b =>
                 {
                     b.Property<int>("TagId")
@@ -212,6 +272,8 @@ namespace MaplicationAPI.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Token");
 
                     b.Property<int>("UserTypeId");
 
@@ -239,7 +301,7 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Company", b =>
@@ -247,12 +309,12 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MaplicationAPI.EntityFramework.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Coordinator", b =>
@@ -260,7 +322,7 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Event", b =>
@@ -268,12 +330,12 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.Coordinator", "Coordinator")
                         .WithMany("Events")
                         .HasForeignKey("CoordinatorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.JobPostings", b =>
@@ -281,7 +343,23 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
                         .WithMany("Jobs")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Map", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Notes", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.User", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Recruiter", b =>
@@ -289,7 +367,20 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
                         .WithMany("Recruiters")
                         .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Tables", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("MaplicationAPI.EntityFramework.Map", "Map")
+                        .WithMany("Tables")
+                        .HasForeignKey("MapId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.User", b =>
@@ -297,7 +388,7 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.UserTypes", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

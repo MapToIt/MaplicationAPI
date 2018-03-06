@@ -12,9 +12,6 @@ namespace MaplicationAPI.EntityFramework
         [Key]
         public int AttendanceId { get; set; }
 
-        public int UserId { get; set; }
-        public int EventId { get; set; }
-
         [ForeignKey("UserId")]
         public User User { get; set; }
         [ForeignKey("EventId")]

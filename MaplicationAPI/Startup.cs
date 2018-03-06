@@ -27,7 +27,7 @@ namespace MaplicationAPI
         {
             services.AddMvc();
 
-            var connection = @"Server=.\SQLEXPRESS;Database=Maplication;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=maplication.database.windows.net;Database=MaplicationAPI;Trusted_Connection=True;ConnectRetryCount=0;Trusted_Connection=False;Encrypt=True;User ID = dotnetapp; Password =password!1;";
             services.AddDbContext<MaplicationContext>(options => options.UseSqlServer(connection));
         }
 
