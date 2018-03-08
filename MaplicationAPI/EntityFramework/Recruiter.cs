@@ -18,7 +18,7 @@ namespace MaplicationAPI.EntityFramework
         public string JobTitle { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
 
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }

@@ -13,7 +13,7 @@ namespace MaplicationAPI.EntityFramework
         public int MapId { get; set; }
 
         public int EventId { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public ICollection<Tables> Tables { get; set; }
 
         [ForeignKey("EventId")]
