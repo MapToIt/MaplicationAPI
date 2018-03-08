@@ -13,7 +13,11 @@ namespace MaplicationAPI.EntityFramework
         public int TableId { get; set; }
 
         public int MapId { get; set; }
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
+        public int XCoordinate { get; set; }
+        public int YCoordinate { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
 
 
         [ForeignKey("MapId")]

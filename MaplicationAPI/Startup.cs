@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MaplicationAPI.Configuration;
 using MaplicationAPI.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,8 @@ namespace MaplicationAPI
 
             var connection = @"Server=maplication.database.windows.net;Database=MaplicationAPI;Trusted_Connection=True;ConnectRetryCount=0;Trusted_Connection=False;Encrypt=True;User ID = dotnetapp; Password =password!1;";
             services.AddDbContext<MaplicationContext>(options => options.UseSqlServer(connection));
+
+            DependenccyInjectionConfiguration.Configure(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

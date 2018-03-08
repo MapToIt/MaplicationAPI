@@ -21,7 +21,7 @@ namespace MaplicationAPI.EntityFramework
         public string City { get; set; }
         public int StateId { get; set; }
         public int ZipCode { get; set; }
-        public Byte[] Logo { get; set; }
+        public string Logo { get; set; }
         public string Url { get; set; }
         public string Chips { get; set; }
         public ICollection<Recruiter> Recruiters { get; set; }

@@ -5,9 +5,8 @@ namespace MaplicationAPI.EntityFramework
 {
     public class MaplicationContext : DbContext
     {
-        public MaplicationContext(DbContextOptions<MaplicationContext> options)
-            : base(options)
-        { }
+        public MaplicationContext(DbContextOptions options) : base(options) {
+        }
 
         public DbSet<Attendee> Attendee { get; set; }
         public DbSet<Company> Company { get; set; }
@@ -22,5 +21,10 @@ namespace MaplicationAPI.EntityFramework
         public DbSet<Tags> Tags { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserTypes> UserTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }

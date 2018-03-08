@@ -14,10 +14,12 @@ namespace MaplicationAPI.EntityFramework
         [Key]
         public int AttendeeId { get; set; }
         
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public byte[] Image { get; set; }
-        public byte[] Resume { get; set; }
+        public string Image { get; set; }
+        public string Resume { get; set; }
         public string Degree { get; set; }
         public string University { get; set; }
         public string Chips { get; set; }
@@ -25,5 +27,14 @@ namespace MaplicationAPI.EntityFramework
 
         [ForeignKey("UserId")]
         public User User { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
     }
 }
