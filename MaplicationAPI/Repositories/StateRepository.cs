@@ -22,5 +22,10 @@ namespace MaplicationAPI.Repositories
         {
             return _context.State.AsNoTracking().ToList();
         }
+
+        public Event GetEvent()
+        {
+            return _context.Event.Include("State").Where(e => e.EventId == 2).FirstOrDefault();
+        }
     }
 }

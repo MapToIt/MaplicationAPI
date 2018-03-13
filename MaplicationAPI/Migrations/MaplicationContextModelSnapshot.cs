@@ -117,7 +117,7 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<int>("CoordinatorId");
+                    b.Property<int?>("CoordinatorId");
 
                     b.Property<string>("Description");
 
@@ -339,10 +339,9 @@ namespace MaplicationAPI.Migrations
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Event", b =>
                 {
-                    b.HasOne("MaplicationAPI.EntityFramework.Coordinator", "Coordinator")
+                    b.HasOne("MaplicationAPI.EntityFramework.Coordinator")
                         .WithMany("Events")
-                        .HasForeignKey("CoordinatorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CoordinatorId");
 
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()

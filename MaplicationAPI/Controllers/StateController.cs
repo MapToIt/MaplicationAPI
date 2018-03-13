@@ -27,5 +27,12 @@ namespace MaplicationAPI.Controllers
         {
             return _StateService.GetStates();
         }
+
+        // GET api/State
+        [HttpGet("Event")]
+        public Event GetEvent()
+        {
+            return _StateService.GetEvent();
+        }
     }
 }
