@@ -7,6 +7,7 @@ using MaplicationAPI.Repositories.RepositoryInterfaces;
 using MaplicationAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace MaplicationAPI.Controllers
 {
@@ -36,15 +37,17 @@ namespace MaplicationAPI.Controllers
         }
 
         //POST api/Event/Add
-        [HttpPost("Add")]
-        public void AddEvent(Event evnt)
+        [HttpPost]
+        public void AddEvent([FromBody]Event evnt)
         {
-            if (!ModelState.IsValid)
-            {
-                return;
-                //return BadRequest(ModelState);
-            }
+            //Event posted = evnt.ToObject<Event>();
+            //if (!ModelState.IsValid)
+            //{
+            //    return;
+            //    //return BadRequest(ModelState);
+            //}
             // Calling the Reopsitory project AddBook method
+            Console.Error.Write(evnt.EventTitle);
             _EventService.AddEvent(evnt);
             return;
             //return CreatedAtRoute("DefaultApi", new { id = book.Book_Id }, book);
