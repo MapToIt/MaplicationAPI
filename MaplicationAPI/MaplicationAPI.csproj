@@ -9,6 +9,17 @@
     <Compile Remove="Migrations\20180225181044_AddingNotesANDJobsANDEvents.Designer.cs" />
     <Compile Remove="Migrations\20180225182411_AddingMapANDTables.cs" />
     <Compile Remove="Migrations\20180225182411_AddingMapANDTables.Designer.cs" />
+    <Compile Remove="Migrations\20180308231422_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308231422_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232607_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232607_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232721_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232721_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232822_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232822_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308233028_UpdateEvent.cs" />
+    <Compile Remove="Migrations\20180308233028_UpdateEvent.Designer.cs" />
+    <Compile Remove="Repositories\RepositoryInterfaces\TableRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

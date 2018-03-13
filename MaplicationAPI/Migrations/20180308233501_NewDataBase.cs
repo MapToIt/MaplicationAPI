@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MaplicationAPI.Migrations
 {
-    public partial class Everything : Migration
+    public partial class NewDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,7 +65,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.UserTypeId,
                         principalTable: "UserTypes",
                         principalColumn: "UserTypeId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,9 +77,11 @@ namespace MaplicationAPI.Migrations
                     Chips = table.Column<string>(nullable: true),
                     Degree = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    Resume = table.Column<byte[]>(nullable: true),
+                    Resume = table.Column<string>(nullable: true),
                     University = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -91,7 +93,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,7 +105,7 @@ namespace MaplicationAPI.Migrations
                     Chips = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
-                    Logo = table.Column<byte[]>(nullable: true),
+                    Logo = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     StateId = table.Column<int>(nullable: false),
                     Street = table.Column<string>(nullable: true),
@@ -120,13 +122,13 @@ namespace MaplicationAPI.Migrations
                         column: x => x.StateId,
                         principalTable: "State",
                         principalColumn: "StateId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Company_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -149,7 +151,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -173,7 +175,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.CompanyId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,7 +197,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Company",
                         principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -210,7 +212,7 @@ namespace MaplicationAPI.Migrations
                     JobTitle = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    Photo = table.Column<byte[]>(nullable: true)
+                    Photo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -220,7 +222,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Company",
                         principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -230,7 +232,7 @@ namespace MaplicationAPI.Migrations
                     EventId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     City = table.Column<string>(nullable: true),
-                    CoordinatorId = table.Column<int>(nullable: false),
+                    CoordinatorId = table.Column<int>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     EndTime = table.Column<DateTime>(nullable: false),
                     EventTitle = table.Column<string>(nullable: true),
@@ -254,7 +256,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.StateId,
                         principalTable: "State",
                         principalColumn: "StateId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -264,7 +266,7 @@ namespace MaplicationAPI.Migrations
                     MapId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EventId = table.Column<int>(nullable: false),
-                    Image = table.Column<byte[]>(nullable: true)
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -274,7 +276,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.EventId,
                         principalTable: "Event",
                         principalColumn: "EventId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -283,8 +285,12 @@ namespace MaplicationAPI.Migrations
                 {
                     TableId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CompanyId = table.Column<int>(nullable: false),
-                    MapId = table.Column<int>(nullable: false)
+                    CompanyId = table.Column<int>(nullable: true),
+                    Height = table.Column<int>(nullable: false),
+                    MapId = table.Column<int>(nullable: false),
+                    Width = table.Column<int>(nullable: false),
+                    XCoordinate = table.Column<int>(nullable: false),
+                    YCoordinate = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -300,7 +306,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.MapId,
                         principalTable: "Map",
                         principalColumn: "MapId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -21,11 +21,8 @@ namespace MaplicationAPI.EntityFramework
         public string City { get; set; }
         public int StateId { get; set; }
         public int ZipCode { get; set; }
-        public int CoordinatorId { get; set; }
 
         [ForeignKey("StateId")]
         public State State { get; set; }
-        [ForeignKey("CoordinatorId")]
-        public Coordinator Coordinator { get; set; }
     }
 }
