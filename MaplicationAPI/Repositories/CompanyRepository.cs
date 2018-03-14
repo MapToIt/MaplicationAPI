@@ -9,24 +9,18 @@ using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MaplicationAPI.Repositories
 {
-    public class AttendeeRepository : IAttendeeRepository
+    public class CompanyRepository : ICompanyRepository
     {
         private readonly MaplicationContext _context;
 
-        public AttendeeRepository(MaplicationContext context)
+        public CompanyRepository(MaplicationContext context)
         {
             _context = context;
         }
 
-
-        public List<Attendee> BrowseAttendees()
+        public bool isCompany(string id)
         {
-            return _context.Attendee.AsNoTracking().ToList();
-        }
-
-        public bool isAttendee(string id)
-        {
-            return _context.Attendee.Any(a => a.UserId == id);
+            return _context.Company.Any(a => a.UserId == id);
         }
     }
 }

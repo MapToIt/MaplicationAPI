@@ -23,10 +23,7 @@ namespace MaplicationAPI.EntityFramework
         public string Degree { get; set; }
         public string University { get; set; }
         public string Chips { get; set; }
-        public int UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public string UserId { get; set; }
 
         [NotMapped]
         public string FullName

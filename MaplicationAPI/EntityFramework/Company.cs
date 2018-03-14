@@ -13,7 +13,7 @@ namespace MaplicationAPI.EntityFramework
         [Key]
         public int CompanyId { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string CompanyName { get; set; }
         public string PhoneNumber { get; set; }
         public int StreetNumber { get; set; }
@@ -29,8 +29,6 @@ namespace MaplicationAPI.EntityFramework
 
         [ForeignKey("StateId")]
         public State State { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
 
     }
 }

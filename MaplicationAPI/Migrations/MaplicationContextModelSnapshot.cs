@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace MaplicationAPI.Migrations
@@ -41,11 +43,9 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("University");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("AttendeeId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Attendee");
                 });
@@ -73,15 +73,13 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.Property<int>("ZipCode");
 
                     b.HasKey("CompanyId");
 
                     b.HasIndex("StateId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Company");
                 });
@@ -99,11 +97,9 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("CoordinatorId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Coordinator");
                 });
@@ -306,32 +302,11 @@ namespace MaplicationAPI.Migrations
                     b.ToTable("UserTypes");
                 });
 
-            modelBuilder.Entity("MaplicationAPI.EntityFramework.Attendee", b =>
-                {
-                    b.HasOne("MaplicationAPI.EntityFramework.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Company", b =>
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MaplicationAPI.EntityFramework.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MaplicationAPI.EntityFramework.Coordinator", b =>
-                {
-                    b.HasOne("MaplicationAPI.EntityFramework.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

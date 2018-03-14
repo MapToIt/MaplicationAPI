@@ -16,23 +16,21 @@ namespace MaplicationAPI.Controllers
     {
         private readonly UserService _UserService;
 
-        public UserController(ICoordinatorRepository coordinatorRepository, IAttendeeRepository attendeeRepository, ICompanyRepository companyRepository)
+        public UserController()
         {
-            _UserService = new UserService(coordinatorRepository, attendeeRepository, companyRepository);
+            _UserService = new UserService();
         }
 
-        // GET api/State
-        [HttpGet]
-        public List<State> Get()
+        //get api/User/{id}
+        [HttpGet("{id}")]
+        public string getusertype(string id)
         {
-            return _StateService.GetStates();
-        }
+            if (id == null)
+            {
+                return null;
+            }
 
-        // GET api/State
-        [HttpGet("Event")]
-        public Event GetEvent()
-        {
-            return _StateService.GetEvent();
+            return _UserService.GetUserType(id);
         }
     }
 }

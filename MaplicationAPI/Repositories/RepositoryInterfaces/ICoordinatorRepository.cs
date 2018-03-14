@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MaplicationAPI.Repositories.RepositoryInterfaces
 {
-    public interface IAttendeeRepository
+    public interface ICoordinatorRepository
     {
-        List<Attendee> BrowseAttendees();
-        bool isAttendee(string id);
+        bool isCoordinator(string id);
     }
 }
