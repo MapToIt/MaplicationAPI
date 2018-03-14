@@ -20,18 +20,34 @@ namespace MaplicationAPI.Repositories
 
         public List<Event> BrowseEvents()
         {
-            return _context.Event.AsNoTracking().ToList();
+            return _context.Event.AsNoTracking().Include("State").ToList();
         }
 
         public Event BrowseEventById(int id)
         {
-            return _context.Event.AsNoTracking().Include("State").Include("Coordinator").FirstOrDefault(e => e.EventId == id);
+            return _context.Event.AsNoTracking().Include("State").FirstOrDefault(e => e.EventId == id);
         }
 
-        public void AddEvent(Event evnt)
+        public void AddEvent(Event _event)
         {
-            _context.Event.Add(evnt);
+            _context.Event.Add(_event);
             _context.SaveChanges();
+        }
+
+        public void UpdateEvent(Event _event)
+        {
+            var existingEvent = _context.Event.Update(_event);
+
+            if (existingEvent != null)
+            {
+                
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
         }
     }
 }
