@@ -16,9 +16,9 @@ namespace MaplicationAPI.Controllers
     {
         private readonly UserService _UserService;
 
-        public UserController()
+        public UserController(IAttendeeRepository attendeeRepository, ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository)
         {
-            _UserService = new UserService();
+            _UserService = new UserService(attendeeRepository, companyRepository, coordinatorRepository);
         }
 
         //get api/User/{id}

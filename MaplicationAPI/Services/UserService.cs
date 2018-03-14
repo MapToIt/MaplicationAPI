@@ -9,20 +9,24 @@ namespace MaplicationAPI.Services
 {
     public class UserService
     {
-        AttendeeService _attendeeService;
-        CompanyService _companyService;
-        CoordinatorService _coordinatorService;
+        private readonly IAttendeeRepository _attendeeRepository;
+        private readonly ICompanyRepository _companyRepository;
+        private readonly ICoordinatorRepository _coordinatorRepository;
 
 
-        public UserService()
+        public UserService(IAttendeeRepository attendeeRepository, ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository)
         {
+            _attendeeRepository = attendeeRepository;
+            _companyRepository = companyRepository;
+            _coordinatorRepository = coordinatorRepository;
+            
         }
 
         public string GetUserType(string id)
         {
-            bool isAttendee = _attendeeService.isAttendee(id);
-            bool isCompany = _companyService.isCompany(id);
-            bool isCoordinator = _coordinatorService.isCoordinator(id);
+            bool isAttendee = _attendeeRepository.isAttendee(id);
+            bool isCompany = _companyRepository.isCompany(id);
+            bool isCoordinator = _coordinatorRepository.isCoordinator(id);
 
             return isAttendee ? "Attendee" : (isCoordinator ? "Coordinator" : (isCompany ? "Company" : null));
         }
