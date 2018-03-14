@@ -10,6 +10,7 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     {
         List<Event> BrowseEvents();
         Event BrowseEventById(int id);
-        void AddEvent(Event evnt);
+        void AddEvent(Event _event);
+        void UpdateEvent(Event _event);
     }
 }
