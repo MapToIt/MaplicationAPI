@@ -24,8 +24,6 @@ namespace MaplicationAPI.EntityFramework
         public string Logo { get; set; }
         public string Url { get; set; }
         public string Chips { get; set; }
-        public ICollection<Recruiter> Recruiters { get; set; }
-        public ICollection<JobPostings> Jobs { get; set; }
 
         [ForeignKey("StateId")]
         public State State { get; set; }

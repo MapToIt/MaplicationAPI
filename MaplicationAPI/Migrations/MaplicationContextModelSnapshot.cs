@@ -111,7 +111,7 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<int?>("CoordinatorId");
+                    b.Property<int>("CoordinatorId");
 
                     b.Property<string>("Description");
 
@@ -312,9 +312,10 @@ namespace MaplicationAPI.Migrations
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Event", b =>
                 {
-                    b.HasOne("MaplicationAPI.EntityFramework.Coordinator")
-                        .WithMany("Events")
-                        .HasForeignKey("CoordinatorId");
+                    b.HasOne("MaplicationAPI.EntityFramework.Coordinator", "Coordinator")
+                        .WithMany()
+                        .HasForeignKey("CoordinatorId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
@@ -325,7 +326,7 @@ namespace MaplicationAPI.Migrations
             modelBuilder.Entity("MaplicationAPI.EntityFramework.JobPostings", b =>
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
-                        .WithMany("Jobs")
+                        .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -349,7 +350,7 @@ namespace MaplicationAPI.Migrations
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Recruiter", b =>
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
-                        .WithMany("Recruiters")
+                        .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -361,7 +362,7 @@ namespace MaplicationAPI.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.HasOne("MaplicationAPI.EntityFramework.Map", "Map")
-                        .WithMany("Tables")
+                        .WithMany()
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

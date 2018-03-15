@@ -11,10 +11,13 @@ namespace MaplicationAPI.EntityFramework
     {
         [Key]
         public int AttendanceId { get; set; }
+        public string UserId { get; set; }
+        public int UserTypeId { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }
         [ForeignKey("EventId")]
         public Event Event { get; set; }
+        
+        [ForeignKey("UserTypeId")]
+        public UserTypes UserTypes { get; set; }
     }
 }
