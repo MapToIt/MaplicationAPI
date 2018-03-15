@@ -9,24 +9,18 @@ using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MaplicationAPI.Repositories
 {
-    public class AttendeeRepository : IAttendeeRepository
+    public class CoordinatorRepository : ICoordinatorRepository
     {
         private readonly MaplicationContext _context;
 
-        public AttendeeRepository(MaplicationContext context)
+        public CoordinatorRepository(MaplicationContext context)
         {
             _context = context;
         }
 
-
-        public List<Attendee> BrowseAttendees()
+        public bool isCoordinator(string id)
         {
-            return _context.Attendee.AsNoTracking().ToList();
-        }
-
-        public bool isAttendee(string id)
-        {
-            return _context.Attendee.Any(a => a.UserId == id);
+            return _context.Coordinator.Any(a => a.UserId == id);
         }
     }
 }

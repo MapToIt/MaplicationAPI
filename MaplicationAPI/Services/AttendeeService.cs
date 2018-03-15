@@ -20,5 +20,10 @@ namespace MaplicationAPI.Services
         {
             return _attendeeRepository.BrowseAttendees();
         }
+
+        public bool isAttendee(string id)
+        {
+            return _attendeeRepository.isAttendee(id);
+        }
     }
 }

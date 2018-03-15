@@ -14,12 +14,9 @@ namespace MaplicationAPI.EntityFramework
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public ICollection<Event> Events { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }
     }
 }
