@@ -20,5 +20,24 @@ namespace MaplicationAPI.Services
         {
             return _coordinatorRepository.isCoordinator(id);
         }
+        public void AddCoord(Coordinator _coordinator)
+        {
+            _coordinatorRepository.AddCoord(_coordinator);
+        }
+
+        public void UpdateCoord(Coordinator _coordinator)
+        {
+            _coordinatorRepository.UpdateCoord(_coordinator);
+        }
+
+        internal List<Coordinator> GetCoords()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Coordinator isCoordinator(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

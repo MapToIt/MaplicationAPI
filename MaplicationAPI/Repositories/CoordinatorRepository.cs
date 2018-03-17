@@ -22,5 +22,32 @@ namespace MaplicationAPI.Repositories
         {
             return _context.Coordinator.Any(a => a.UserId == id);
         }
+
+        public void AddCoord(Coordinator _Coordinator)
+        {
+            _context.Coordinator.Add(_Coordinator);
+            _context.SaveChanges();
+        }
+
+        public void UpdateCoord(Coordinator _Coordinator)
+        {
+            var existingCoord = _context.Coordinator.Update(_Coordinator);
+
+            if (existingCoord != null)
+            {
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
+        }
+
+        public void CoordEvent(Coordinator _coordinator)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
