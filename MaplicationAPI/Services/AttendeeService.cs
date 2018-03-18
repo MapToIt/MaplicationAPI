@@ -16,9 +16,33 @@ namespace MaplicationAPI.Services
             _attendeeRepository = attendeeRepository;
         }
 
+        public bool Exists(int AttendeeId)
+        {
+            return _attendeeRepository.Exists(AttendeeId);
+        }
+
         public List<Attendee> GetAttendees()
         {
             return _attendeeRepository.BrowseAttendees();
         }
+
+        public Attendee GetAttendee(int AttendeeId)
+        {
+            return _attendeeRepository.GetAttendee(AttendeeId);
+        }
+
+        public void InsertAttendee(Attendee attendee)
+        {
+            _attendeeRepository.InsertAttendee(attendee);
+        }
+
+        public void UpdateAttendee(Attendee attendee)
+        {
+            if(_attendeeRepository.Exists(attendee.AttendeeId))
+                _attendeeRepository.UpdateAttendee(attendee);
+        }
+
+
+
     }
 }

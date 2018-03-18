@@ -9,3 +9,14 @@ C:\Users\stacy\OneDrive\Desktop\Spring 2018\Capstone\MaplicationAPI\MaplicationA
 C:\Users\stacy\OneDrive\Desktop\Spring 2018\Capstone\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.AssemblyInfo.cs
 C:\Users\stacy\OneDrive\Desktop\Spring 2018\Capstone\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.dll
 C:\Users\stacy\OneDrive\Desktop\Spring 2018\Capstone\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.pdb
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\bin\Debug\netcoreapp2.0\MaplicationAPI.deps.json
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\bin\Debug\netcoreapp2.0\MaplicationAPI.runtimeconfig.json
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\bin\Debug\netcoreapp2.0\MaplicationAPI.runtimeconfig.dev.json
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\bin\Debug\netcoreapp2.0\MaplicationAPI.dll
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\bin\Debug\netcoreapp2.0\MaplicationAPI.pdb
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.csprojResolveAssemblyReference.cache
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.AssemblyInfo.cs
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.dll
+C:\Users\Chris\Documents\MaplicationAPI\MaplicationAPI\obj\Debug\netcoreapp2.0\MaplicationAPI.pdb
