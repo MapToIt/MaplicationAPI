@@ -16,19 +16,14 @@ namespace MaplicationAPI.Services
             _attendeeRepository = attendeeRepository;
         }
 
-        public bool Exists(int AttendeeId)
-        {
-            return _attendeeRepository.Exists(AttendeeId);
-        }
-
         public List<Attendee> GetAttendees()
         {
             return _attendeeRepository.BrowseAttendees();
         }
 
-        public Attendee GetAttendee(int AttendeeId)
+        public Attendee GetAttendee(string id)
         {
-            return _attendeeRepository.GetAttendee(AttendeeId);
+            return _attendeeRepository.GetAttendee(id);
         }
 
         public void InsertAttendee(Attendee attendee)
@@ -38,7 +33,7 @@ namespace MaplicationAPI.Services
 
         public void UpdateAttendee(Attendee attendee)
         {
-            if(_attendeeRepository.Exists(attendee.AttendeeId))
+            if(_attendeeRepository.isAttendee(attendee.UserId))
                 _attendeeRepository.UpdateAttendee(attendee);
         }
 

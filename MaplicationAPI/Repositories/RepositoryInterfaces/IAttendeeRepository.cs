@@ -10,10 +10,9 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     {
         List<Attendee> BrowseAttendees();
 
-        Attendee GetAttendee(int AttendeeId);
+        Attendee GetAttendee(string id);
         void InsertAttendee(Attendee attendee);
         void UpdateAttendee(Attendee attendee);
-        bool Exists(int AttendeeId);
         bool isAttendee(string id);
     }
 }

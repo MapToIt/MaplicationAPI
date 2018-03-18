@@ -21,14 +21,6 @@ namespace MaplicationAPI.Controllers
             _attendeeService = new AttendeeService(attendeeRepository);
         }
 
-        //GET if exists api/Attendee/exists/id
-        [HttpGet("exists/{AttendeeId}")]
-        public bool Exists(int AttendeeId)
-        {
-            return _attendeeService.Exists(AttendeeId);
-        }
-
-
         // GET all api/attendee
         [HttpGet]
         public List<Attendee> Get()
@@ -37,10 +29,10 @@ namespace MaplicationAPI.Controllers
         }
 
         // GET one api/attendee/id
-        [HttpGet("{AttendeeId}")]
-        public void GetAttendee(int AttendeeId)
+        [HttpGet("{id}")]
+        public void GetAttendee(string id)
         {
-            _attendeeService.GetAttendee(AttendeeId);
+            _attendeeService.GetAttendee(id);
         }
 
         //PUT one attendee api/Attendee

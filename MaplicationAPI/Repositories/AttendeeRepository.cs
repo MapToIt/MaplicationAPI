@@ -18,20 +18,17 @@ namespace MaplicationAPI.Repositories
             _context = context;
         }
 
-        public bool Exists(int AttendeeId)
-        {
-            return _context.Attendee.Find(AttendeeId) != null;
-        }
-
 
         public List<Attendee> BrowseAttendees()
         {
             return _context.Attendee.AsNoTracking().ToList();
         }
 
-        public Attendee GetAttendee(int AttendeeId)
+        public Attendee GetAttendee(string id)
         {
-            return _context.Attendee.Find(AttendeeId);
+            return (from c in _context.Set<Attendee>()
+                    where c.UserId == id
+                    select c).SingleOrDefault();
         }
 
         public void InsertAttendee(Attendee attendee)
