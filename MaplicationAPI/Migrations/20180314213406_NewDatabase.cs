@@ -5,10 +5,49 @@ using System.Collections.Generic;
 
 namespace MaplicationAPI.Migrations
 {
-    public partial class Everything : Migration
+    public partial class NewDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Attendee",
+                columns: table => new
+                {
+                    AttendeeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Chips = table.Column<string>(nullable: true),
+                    Degree = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    Resume = table.Column<string>(nullable: true),
+                    University = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Attendee", x => x.AttendeeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Coordinator",
+                columns: table => new
+                {
+                    CoordinatorId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Coordinator", x => x.CoordinatorId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "State",
                 columns: table => new
@@ -49,52 +88,6 @@ namespace MaplicationAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Token = table.Column<string>(nullable: true),
-                    UserTypeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_User_UserTypes_UserTypeId",
-                        column: x => x.UserTypeId,
-                        principalTable: "UserTypes",
-                        principalColumn: "UserTypeId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Attendee",
-                columns: table => new
-                {
-                    AttendeeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Chips = table.Column<string>(nullable: true),
-                    Degree = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Resume = table.Column<byte[]>(nullable: true),
-                    University = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Attendee", x => x.AttendeeId);
-                    table.ForeignKey(
-                        name: "FK_Attendee_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Company",
                 columns: table => new
                 {
@@ -103,13 +96,13 @@ namespace MaplicationAPI.Migrations
                     Chips = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
-                    Logo = table.Column<byte[]>(nullable: true),
+                    Logo = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     StateId = table.Column<int>(nullable: false),
                     Street = table.Column<string>(nullable: true),
                     StreetNumber = table.Column<int>(nullable: false),
                     Url = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     ZipCode = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -120,107 +113,7 @@ namespace MaplicationAPI.Migrations
                         column: x => x.StateId,
                         principalTable: "State",
                         principalColumn: "StateId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Company_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Coordinator",
-                columns: table => new
-                {
-                    CoordinatorId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Email = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Coordinator", x => x.CoordinatorId);
-                    table.ForeignKey(
-                        name: "FK_Coordinator_User_UserId",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Notes",
-                columns: table => new
-                {
-                    NoteId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CompanyId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Major = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notes", x => x.NoteId);
-                    table.ForeignKey(
-                        name: "FK_Notes_User_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "User",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JobPostings",
-                columns: table => new
-                {
-                    JobId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Chips = table.Column<string>(nullable: true),
-                    CompanyId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    JobTitle = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JobPostings", x => x.JobId);
-                    table.ForeignKey(
-                        name: "FK_JobPostings_Company_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Company",
-                        principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Recruiter",
-                columns: table => new
-                {
-                    RecruiterId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CompanyId = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    JobTitle = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Photo = table.Column<byte[]>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Recruiter", x => x.RecruiterId);
-                    table.ForeignKey(
-                        name: "FK_Recruiter_Company_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Company",
-                        principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -230,7 +123,7 @@ namespace MaplicationAPI.Migrations
                     EventId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     City = table.Column<string>(nullable: true),
-                    CoordinatorId = table.Column<int>(nullable: false),
+                    CoordinatorId = table.Column<int>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     EndTime = table.Column<DateTime>(nullable: false),
                     EventTitle = table.Column<string>(nullable: true),
@@ -254,7 +147,74 @@ namespace MaplicationAPI.Migrations
                         column: x => x.StateId,
                         principalTable: "State",
                         principalColumn: "StateId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Token = table.Column<string>(nullable: true),
+                    UserTypeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_User_UserTypes_UserTypeId",
+                        column: x => x.UserTypeId,
+                        principalTable: "UserTypes",
+                        principalColumn: "UserTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobPostings",
+                columns: table => new
+                {
+                    JobId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Chips = table.Column<string>(nullable: true),
+                    CompanyId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    JobTitle = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobPostings", x => x.JobId);
+                    table.ForeignKey(
+                        name: "FK_JobPostings_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
+                        principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Recruiter",
+                columns: table => new
+                {
+                    RecruiterId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CompanyId = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    JobTitle = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    Photo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recruiter", x => x.RecruiterId);
+                    table.ForeignKey(
+                        name: "FK_Recruiter_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
+                        principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -264,7 +224,7 @@ namespace MaplicationAPI.Migrations
                     MapId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EventId = table.Column<int>(nullable: false),
-                    Image = table.Column<byte[]>(nullable: true)
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -274,7 +234,31 @@ namespace MaplicationAPI.Migrations
                         column: x => x.EventId,
                         principalTable: "Event",
                         principalColumn: "EventId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notes",
+                columns: table => new
+                {
+                    NoteId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CompanyId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Major = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notes", x => x.NoteId);
+                    table.ForeignKey(
+                        name: "FK_Notes_User_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "User",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -283,8 +267,12 @@ namespace MaplicationAPI.Migrations
                 {
                     TableId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CompanyId = table.Column<int>(nullable: false),
-                    MapId = table.Column<int>(nullable: false)
+                    CompanyId = table.Column<int>(nullable: true),
+                    Height = table.Column<int>(nullable: false),
+                    MapId = table.Column<int>(nullable: false),
+                    Width = table.Column<int>(nullable: false),
+                    XCoordinate = table.Column<int>(nullable: false),
+                    YCoordinate = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -300,28 +288,13 @@ namespace MaplicationAPI.Migrations
                         column: x => x.MapId,
                         principalTable: "Map",
                         principalColumn: "MapId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Attendee_UserId",
-                table: "Attendee",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Company_StateId",
                 table: "Company",
                 column: "StateId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Company_UserId",
-                table: "Company",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Coordinator_UserId",
-                table: "Coordinator",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Event_CoordinatorId",
@@ -390,10 +363,16 @@ namespace MaplicationAPI.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
                 name: "Company");
 
             migrationBuilder.DropTable(
                 name: "Map");
+
+            migrationBuilder.DropTable(
+                name: "UserTypes");
 
             migrationBuilder.DropTable(
                 name: "Event");
@@ -403,12 +382,6 @@ namespace MaplicationAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "State");
-
-            migrationBuilder.DropTable(
-                name: "User");
-
-            migrationBuilder.DropTable(
-                name: "UserTypes");
         }
     }
 }

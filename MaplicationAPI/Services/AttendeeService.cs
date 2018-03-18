@@ -42,7 +42,10 @@ namespace MaplicationAPI.Services
                 _attendeeRepository.UpdateAttendee(attendee);
         }
 
-
+        public bool isAttendee(string id)
+        {
+            return _attendeeRepository.isAttendee(id);
+        }
 
     }
 }

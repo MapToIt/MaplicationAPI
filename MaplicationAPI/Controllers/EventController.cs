@@ -21,18 +21,44 @@ namespace MaplicationAPI.Controllers
             _EventService = new EventService(EventRepository);
         }
 
-        // GET api/Event
-        [HttpGet]
-        public List<Event> Get()
+        // GET api/Event/Details
+        [HttpGet("Details")]
+        public List<Event> GetEvents()
         {
             return _EventService.GetEvents();
         }
 
-        //GET api/Event/1
-        [HttpGet("{id}")]
-        public Event Get(int id)
+        //GET api/Event/Details/1
+        [HttpGet("Details/{id}")]
+        public Event GetEventById(int id)
         {
             return _EventService.GetEventById(id);
+        }
+
+        //POST api/Event/Add
+        [HttpPost("Add")]
+        public void AddEvent([FromBody]Event _event)
+        {
+            if (!ModelState.IsValid)
+            {
+                return;
+                //return BadRequest(ModelState);
+            }
+            _EventService.AddEvent(_event);
+            return;
+            //return CreatedAtRoute("DefaultApi", new { id = book.Book_Id }, book);
+        }
+
+        //PUT api/Event/Update/1
+        [HttpPut("Update")]
+        public void UpdateEvent([FromBody]Event _event)
+        {
+            if (!ModelState.IsValid)
+            {
+                return;
+            }
+            _EventService.UpdateEvent(_event);
+            return;
         }
     }
 }

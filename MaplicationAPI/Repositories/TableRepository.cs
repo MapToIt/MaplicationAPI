@@ -8,24 +8,13 @@ using System.Threading.Tasks;
 
 namespace MaplicationAPI.Repositories
 {
-    public class StateRepository : IStateRepository
+    public class TableRepository : ITableRepository
     {
         private readonly EntityFramework.MaplicationContext _context;
 
-        public StateRepository(MaplicationContext context)
+        public TableRepository(MaplicationContext context)
         {
             _context = context;
-        }
-
-
-        public List<State> BrowseStates()
-        {
-            return _context.State.AsNoTracking().ToList();
-        }
-
-        public Event GetEvent()
-        {
-            return _context.Event.Include("State").Where(e => e.EventId == 2).FirstOrDefault();
         }
     }
 }

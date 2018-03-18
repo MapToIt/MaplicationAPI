@@ -9,5 +9,6 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     public interface IStateRepository
     {
         List<State> BrowseStates();
+        Event GetEvent();
     }
 }

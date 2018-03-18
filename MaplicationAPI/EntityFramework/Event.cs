@@ -25,6 +25,7 @@ namespace MaplicationAPI.EntityFramework
 
         [ForeignKey("StateId")]
         public State State { get; set; }
+
         [ForeignKey("CoordinatorId")]
         public Coordinator Coordinator { get; set; }
     }

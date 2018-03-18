@@ -47,5 +47,10 @@ namespace MaplicationAPI.Repositories
 
         }
 
+        public bool isAttendee(string id)
+        {
+            return _context.Attendee.Any(a => a.UserId == id);
+        }
+
     }
 }

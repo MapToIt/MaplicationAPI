@@ -25,5 +25,15 @@ namespace MaplicationAPI.Services
         {
             return _EventRepository.BrowseEventById(id);
         }
+
+        public void AddEvent(Event _event)
+        {
+            _EventRepository.AddEvent(_event);
+        }
+
+        public void UpdateEvent(Event _event)
+        {
+            _EventRepository.UpdateEvent(_event);
+        }
     }
 }

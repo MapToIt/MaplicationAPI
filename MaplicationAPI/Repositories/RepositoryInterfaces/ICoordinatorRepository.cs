@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MaplicationAPI.Repositories.RepositoryInterfaces
 {
-    public interface IEventRepository
+    public interface ICoordinatorRepository
     {
-        List<Event> BrowseEvents();
-        Event BrowseEventById(int id);
-        void AddEvent(Event _event);
-        void UpdateEvent(Event _event);
+        bool isCoordinator(string id);
     }
 }

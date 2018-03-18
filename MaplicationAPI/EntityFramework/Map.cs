@@ -14,7 +14,6 @@ namespace MaplicationAPI.EntityFramework
 
         public int EventId { get; set; }
         public string Image { get; set; }
-        public ICollection<Tables> Tables { get; set; }
 
         [ForeignKey("EventId")]
         public Event Event { get; set; }
