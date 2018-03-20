@@ -21,9 +21,9 @@ namespace MaplicationAPI.Services
             return _MapRepository.GetAllMaps();
         }
 
-        public Map GetMap(int id)
+        public Map GetMap(int eventId)
         {
-            return _MapRepository.GetMap(id);
+            return _MapRepository.GetMap(eventId);
         }
 
         public void AddMap(Map map)

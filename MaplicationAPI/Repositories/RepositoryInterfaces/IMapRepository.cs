@@ -9,7 +9,7 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     public interface IMapRepository
     {
         List<Map> GetAllMaps();
-        Map GetMap(int id);
+        Map GetMap(int eventId);
         void AddMap(Map map);
     }
 }  

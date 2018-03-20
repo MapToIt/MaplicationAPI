@@ -20,12 +20,13 @@ namespace MaplicationAPI.Repositories
 
         public List<Map> GetAllMaps()
         {
-            return _context.Map.AsNoTracking().Include("Event").ToList();
+            return _context.Map.AsNoTracking().Include("Event").Include("Event.State").Include("Event.Coordinator").ToList();
         }
 
-        public Map GetMap(int id)
+        //By Event ID
+        public Map GetMap(int eventId)
         {
-            return _context.Map.AsNoTracking().Include("Event").FirstOrDefault(m => m.MapId == id);
+            return _context.Map.AsNoTracking().Include("Event").Include("Event.State").Include("Event.Coordinator").FirstOrDefault(m => m.EventId == eventId);
         }
 
         public void AddMap(Map map)

@@ -30,9 +30,9 @@ namespace MaplicationAPI.Controllers
 
         //GET api/Map/Details/1
         [HttpGet("Details/{id}")]
-        public Map GetMap(int id)
+        public Map GetMap(int eventId)
         {
-            return _MapService.GetMap(id);
+            return _MapService.GetMap(eventId);
         }
 
         //POST api/Map/Add
