@@ -11,14 +11,24 @@ namespace MaplicationAPI.Repositories
 {
     public class CoordinatorRepository : ICoordinatorRepository
     {
-        private readonly MaplicationContext _context;
+        private readonly EntityFramework.MaplicationContext _context;
 
         public CoordinatorRepository(MaplicationContext context)
         {
             _context = context;
         }
 
-        public bool isCoordinator(string id)
+        public List<Coordinator> BrowseCoords()
+        {
+            return _context.Coordinator.AsNoTracking().Include("Coordinator").ToList();
+        }
+
+        public Coordinator BrowseCoordById(string id)
+        {
+            return _context.Coordinator.AsNoTracking().Include("Coordinator").FirstOrDefault(a => a.UserId == id);
+        }
+
+        public bool IsCoordinator(string id)
         {
             return _context.Coordinator.Any(a => a.UserId == id);
         }
@@ -45,9 +55,5 @@ namespace MaplicationAPI.Repositories
             return;
         }
 
-        public void CoordEvent(Coordinator _coordinator)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

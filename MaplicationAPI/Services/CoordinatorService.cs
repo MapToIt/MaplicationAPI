@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace MaplicationAPI.Services
 {
     public class CoordinatorService
@@ -16,10 +17,21 @@ namespace MaplicationAPI.Services
             _coordinatorRepository = coordinatorRepository;
         }
 
-        public bool isCoordinator(string id)
+        public List<Coordinator> GetCoordinator()
         {
-            return _coordinatorRepository.isCoordinator(id);
+            return _coordinatorRepository.BrowseCoords();
         }
+
+        public Coordinator GetCoordById(string id)
+        {
+            return _coordinatorRepository.BrowseCoordById(id);
+        }
+
+        public bool IsCoordinator(string id)
+        {
+            return _coordinatorRepository.IsCoordinator(id);
+        }
+
         public void AddCoord(Coordinator _coordinator)
         {
             _coordinatorRepository.AddCoord(_coordinator);
@@ -30,14 +42,5 @@ namespace MaplicationAPI.Services
             _coordinatorRepository.UpdateCoord(_coordinator);
         }
 
-        internal List<Coordinator> GetCoords()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal Coordinator isCoordinator(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

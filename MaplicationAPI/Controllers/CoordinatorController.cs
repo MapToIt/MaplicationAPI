@@ -17,9 +17,7 @@ namespace MaplicationAPI.Controllers
     {
         private readonly CoordinatorService _CoordinatorService;
 
-        public object ModelState { get; private set; }
-
-        public CoordinatorController(ICoordinatorRepository CoordinatoRepository)
+       public CoordinatorController(ICoordinatorRepository CoordinatoRepository)
         {
             _CoordinatorService = new CoordinatorService(CoordinatoRepository);
         }
@@ -28,16 +26,9 @@ namespace MaplicationAPI.Controllers
         [HttpGet("Details")]
         public List<Coordinator> GetCoordinator()
         {
-            return _CoordinatorService.GetCoords();
+            return _CoordinatorService.GetCoordinator();
         }
-
-        //GET api/Coordinator/Details/1
-        [HttpGet("Details/{id}")]
-        public Coordinator isCoordinator(int id)
-        {
-            return _CoordinatorService.isCoordinator(id);
-        }
-
+        
         //POST api/Coordinator/Add
         [HttpPost("Add")]
         public void AddCoord([FromBody]Coordinator _Coordinator)
