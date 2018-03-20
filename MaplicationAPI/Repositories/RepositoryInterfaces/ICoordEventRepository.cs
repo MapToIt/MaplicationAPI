@@ -8,9 +8,9 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
 {
 	public interface ICoordEventRepository 
 	{
-		List<Event> BrowseCoordEvent(int id);
-        List<Event> BrowseFutureEvent(int id);
-        List<Event> BrowsePastEvent(int id);
+		List<Event> BrowseCoordEvent();
+        List<Event> BrowseFutureEvent(string id);
+        List<Event> BrowsePastEvent(string id);
 
     }
 }

@@ -21,17 +21,17 @@ namespace MaplicationAPI.Repositories
             _context = context;
         }
 
-        public List<Event> BrowseCoordEvent(int id)
+        public List<Event> BrowseCoordEvent()
         {
             return _context.Event.AsNoTracking().Include("CoordinatorId").ToList();
         }
 
-        public List<Event> BrowseFutureEvent(int id)
+        public List<Event> BrowseFutureEvent(string id)
         {
             return _context.Event.AsNoTracking().OrderByDescending(e => e.StartTime).Where(e => e.StartTime >= thisDay).Include("CoordinatorId").ToList();
         }
 
-        public List<Event> BrowsePastEvent(int id)
+        public List<Event> BrowsePastEvent(string id)
         {
             return _context.Event.AsNoTracking().OrderByDescending(e => e.StartTime).Where(e => e.StartTime < thisDay).Include("CoordinatorId").ToList();
         }

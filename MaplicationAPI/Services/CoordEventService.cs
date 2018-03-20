@@ -21,14 +21,14 @@ namespace MaplicationAPI.Services
             return _CoordEventRepository.BrowseCoordEvent();
         }
 
-        public List<Event> GetFutureEvent()
+        public List<Event> GetFutureEvent(string id)
         {
-            return _CoordEventRepository.BrowseFutureEvent();
+            return _CoordEventRepository.BrowseFutureEvent(id);
         }
 
-        public List<Event> GetPastEvent()
+        public List<Event> GetPastEvent(string id)
         {
-            return _CoordEventRepository.BrowsePastEvent();
+            return _CoordEventRepository.BrowsePastEvent(id);
         }
     }
 }

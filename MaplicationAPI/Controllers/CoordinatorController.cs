@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MaplicationAPI.Controllers
 {
-    public class CoordinatorController
+    [Produces("application/json")]
+    [Route("api/Coordinator")]
+
+    public class CoordinatorController : Controller
     {
         private readonly CoordinatorService _CoordinatorService;
 
@@ -39,11 +42,7 @@ namespace MaplicationAPI.Controllers
         [HttpPost("Add")]
         public void AddCoord([FromBody]Coordinator _Coordinator)
         {
-            if (!ModelState.IsValid)
-            {
-                return;
-                //return BadRequest(ModelState);
-            }
+            
             _CoordinatorService.AddCoord(_Coordinator);
             return;
            
@@ -53,13 +52,10 @@ namespace MaplicationAPI.Controllers
         [HttpPut("Update")]
         public void UpdateCoord([FromBody]Coordinator _Coordinator)
         {
-            if (!ModelState.IsValid)
-            {
-                return;
-            }
+            
             _CoordinatorService.UpdateCoord(_Coordinator);
             return;
         }
     }
 }
-}
+
