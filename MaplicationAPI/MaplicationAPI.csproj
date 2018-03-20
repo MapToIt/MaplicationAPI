@@ -20,6 +20,10 @@
     <Compile Remove="Migrations\20180308233028_UpdateEvent.cs" />
     <Compile Remove="Migrations\20180308233028_UpdateEvent.Designer.cs" />
     <Compile Remove="Repositories\RepositoryInterfaces\TableRepository.cs" />
+    <Compile Remove="Repositories\TableRepository.cs" />
+    <Compile Remove="Repositories\RepositoryInterfaces\ITableRepository.cs" />
+    <Compile Remove="Controllers\TableController.cs" />
+    <Compile Remove="Services\TableService.cs" />
   </ItemGroup>
 
   <ItemGroup>
