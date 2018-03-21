@@ -3,3 +3,8 @@
 .vs/MaplicationAPI/v15/Server/sqlite3/storage.ide
 .vs/MaplicationAPI/v15/Server/sqlite3/db.lock
 MaplicationAPI/bin/Debug/netcoreapp2.0/MaplicationAPI.deps.json
+.vs/config/applicationhost.config
+MaplicationAPI/obj/MaplicationAPI.csproj.nuget.g.targets
+MaplicationAPI/obj/MaplicationAPI.csproj.nuget.g.props
+MaplicationAPI/obj/Debug/netcoreapp2.0/MaplicationAPI.csproj.FileListAbsolute.txt
+MaplicationAPI/bin/Debug/netcoreapp2.0/MaplicationAPI.runtimeconfig.dev.json
