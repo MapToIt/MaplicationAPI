@@ -22,15 +22,15 @@ namespace MaplicationAPI.Controllers
             _CoordinatorService = new CoordinatorService(CoordinatoRepository);
         }
 
-        // GET api/ECoordinator/Details
-        [HttpGet("Details")]
+        // GET api/Coordinator/Details
+        [HttpGet]
         public List<Coordinator> GetCoordinator()
         {
             return _CoordinatorService.GetCoordinator();
         }
         
         //POST api/Coordinator/Add
-        [HttpPost("Add")]
+        [HttpPost()]
         public void AddCoord([FromBody]Coordinator _Coordinator)
         {
             
@@ -40,7 +40,7 @@ namespace MaplicationAPI.Controllers
         }
 
         //PUT api/Coordinator/Update/1
-        [HttpPut("Update")]
+        [HttpPut()]
         public void UpdateCoord([FromBody]Coordinator _Coordinator)
         {
             

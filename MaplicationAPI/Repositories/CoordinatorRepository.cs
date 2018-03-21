@@ -20,12 +20,12 @@ namespace MaplicationAPI.Repositories
 
         public List<Coordinator> BrowseCoords()
         {
-            return _context.Coordinator.AsNoTracking().Include("Coordinator").ToList();
+            return _context.Coordinator.AsNoTracking().ToList();
         }
 
         public Coordinator BrowseCoordById(string id)
         {
-            return _context.Coordinator.AsNoTracking().Include("Coordinator").FirstOrDefault(a => a.UserId == id);
+            return _context.Coordinator.AsNoTracking().FirstOrDefault(a => a.UserId == id);
         }
 
         public bool IsCoordinator(string id)
