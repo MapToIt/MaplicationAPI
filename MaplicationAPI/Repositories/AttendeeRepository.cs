@@ -24,9 +24,30 @@ namespace MaplicationAPI.Repositories
             return _context.Attendee.AsNoTracking().ToList();
         }
 
+        public Attendee GetAttendee(string id)
+        {
+            return (from c in _context.Set<Attendee>()
+                    where c.UserId == id
+                    select c).SingleOrDefault();
+        }
+
+        public void InsertAttendee(Attendee attendee)
+        {
+            _context.Attendee.Add(attendee);
+            _context.SaveChanges();
+        }
+
+        public void UpdateAttendee(Attendee attendee)
+        {
+            _context.Attendee.Update(attendee);
+            _context.SaveChanges();
+
+        }
+
         public bool isAttendee(string id)
         {
             return _context.Attendee.Any(a => a.UserId == id);
         }
+
     }
 }

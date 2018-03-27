@@ -6540,7 +6540,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/2.0.1": {
-      "sha512": "iJQIuH4rwurC4sKg1e/Oi1aILBScH79+E/kWkkikDPUgUPnAVOdjKlmEvV/TJwzy5qUvRc4cIjPSVCmo/xUEsw==",
+      "sha512": "/z1xawAD0oL5AyFd3vn9E7L6mE2UfEU91KwMDWEp8o0+AOrP4ZocJS5Kot5VYJMfDUeAzDBBZPmJs+r6/YUEiA==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.tools/2.0.1",
       "files": [
@@ -13221,7 +13221,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stacy\\.nuget\\packages\\": {},
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
@@ -13231,18 +13231,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\stacy\\OneDrive\\Desktop\\Spring 2018\\Capstone\\MaplicationAPI\\MaplicationAPI\\MaplicationAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Chris\\Documents\\MaplicationAPI\\MaplicationAPI\\MaplicationAPI.csproj",
       "projectName": "MaplicationAPI",
-      "projectPath": "C:\\Users\\stacy\\OneDrive\\Desktop\\Spring 2018\\Capstone\\MaplicationAPI\\MaplicationAPI\\MaplicationAPI.csproj",
-      "packagesPath": "C:\\Users\\stacy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stacy\\OneDrive\\Desktop\\Spring 2018\\Capstone\\MaplicationAPI\\MaplicationAPI\\obj\\",
+      "projectPath": "C:\\Users\\Chris\\Documents\\MaplicationAPI\\MaplicationAPI\\MaplicationAPI.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Chris\\Documents\\MaplicationAPI\\MaplicationAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\stacy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
@@ -13251,7 +13251,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
