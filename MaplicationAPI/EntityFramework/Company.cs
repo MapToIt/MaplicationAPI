@@ -16,11 +16,11 @@ namespace MaplicationAPI.EntityFramework
         public string UserId { get; set; }
         public string CompanyName { get; set; }
         public string PhoneNumber { get; set; }
-        public int StreetNumber { get; set; }
+        public int? StreetNumber { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
-        public int StateId { get; set; }
-        public int ZipCode { get; set; }
+        public int? StateId { get; set; }
+        public int? ZipCode { get; set; }
         public string Logo { get; set; }
         public string Url { get; set; }
         public string Chips { get; set; }

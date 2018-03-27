@@ -17,7 +17,7 @@ namespace MaplicationAPI.Controllers
     {
         private readonly CoordinatorService _CoordinatorService;
 
-       public CoordinatorController(ICoordinatorRepository CoordinatoRepository)
+        public CoordinatorController(ICoordinatorRepository CoordinatoRepository)
         {
             _CoordinatorService = new CoordinatorService(CoordinatoRepository);
         }
@@ -28,7 +28,14 @@ namespace MaplicationAPI.Controllers
         {
             return _CoordinatorService.GetCoordinator();
         }
-        
+
+        //GET api/Coordinator/{id}
+        [HttpGet("{id}")]
+        public Coordinator Get(string id)
+        {
+            return _CoordinatorService.GetCoordById(id);
+        }    
+
         //POST api/Coordinator
         [HttpPost()]
         public void AddCoord([FromBody]Coordinator _Coordinator)
