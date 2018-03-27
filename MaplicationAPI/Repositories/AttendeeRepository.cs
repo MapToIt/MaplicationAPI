@@ -39,10 +39,33 @@ namespace MaplicationAPI.Repositories
 
         public void UpdateAttendee(Attendee attendee)
         {
-            _context.Attendee.Update(attendee);
-            _context.SaveChanges();
+            if (attendee != null)
+            {
+                var existingAttendee = _context.Attendee.Where(c => c.UserId == attendee.UserId).FirstOrDefault();
 
+                if (existingAttendee != null)
+                {
+                    existingAttendee.UserId = attendee.UserId;
+                    existingAttendee.University = attendee.University;
+                    existingAttendee.Resume = attendee.Resume;
+                    existingAttendee.PhoneNumber = attendee.PhoneNumber;
+                    existingAttendee.LastName = attendee.LastName;
+                    existingAttendee.Image = attendee.Image;
+                    existingAttendee.FirstName = attendee.FirstName;
+                    existingAttendee.Email = attendee.Email;
+                    existingAttendee.Degree = attendee.Degree;
+                    existingAttendee.Chips = attendee.Chips;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            return;
         }
+
+    
 
         public bool isAttendee(string id)
         {

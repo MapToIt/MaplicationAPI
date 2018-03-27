@@ -32,21 +32,21 @@ namespace MaplicationAPI.Controllers
 
         // GET one api/Company/id
         [HttpGet("{id}")]
-        public void GetCompany(string id)
+        public Company GetCompany(string id)
         {
-            _companyService.GetCompany(id);
+            return _companyService.GetCompany(id);
         }
 
         //PUT one attendee api/Company
         [HttpPut]
-        public void InsertCompany(Company company)
+        public void InsertCompany([FromBody] Company company)
         {
             _companyService.InsertCompany(company);
         }
 
         //POST api/Company
         [HttpPost]
-        public void UpdateCompany(Company company)
+        public void UpdateCompany([FromBody] Company company)
         {
             _companyService.UpdateCompany(company);
         }

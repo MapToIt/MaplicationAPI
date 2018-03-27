@@ -30,21 +30,21 @@ namespace MaplicationAPI.Controllers
 
         // GET one api/attendee/id
         [HttpGet("{id}")]
-        public void GetAttendee(string id)
+        public Attendee GetAttendee(string id)
         {
-            _attendeeService.GetAttendee(id);
+            return _attendeeService.GetAttendee(id);
         }
 
         //PUT one attendee api/Attendee
         [HttpPut]
-        public void InsertAttendee(Attendee attendee)
+        public void InsertAttendee([FromBody] Attendee attendee)
         {
             _attendeeService.InsertAttendee(attendee);
         }
 
         //POST api/Attendee
         [HttpPost]
-        public void UpdateAttendee(Attendee attendee)
+        public void UpdateAttendee([FromBody] Attendee attendee)
         {
             _attendeeService.UpdateAttendee(attendee);
         }

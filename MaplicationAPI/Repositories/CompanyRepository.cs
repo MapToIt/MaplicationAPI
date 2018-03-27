@@ -36,12 +36,37 @@ namespace MaplicationAPI.Repositories
             _context.SaveChanges();
         }
 
-        public void UpdateCompany(Company attendee)
+        public void UpdateCompany(Company company)
         {
-            _context.Company.Update(attendee);
-            _context.SaveChanges();
+            if (company != null)
+            {
+                var existingCompany = _context.Company.Where(c => c.UserId == company.UserId).FirstOrDefault();
 
+                if (existingCompany != null)
+                {
+                    existingCompany.ZipCode = company.ZipCode;
+                    existingCompany.UserId = company.UserId;
+                    existingCompany.Url = company.Url;
+                    existingCompany.StreetNumber = company.StreetNumber;
+                    existingCompany.Street = company.Street;
+                    existingCompany.StateId = company.StateId;
+                    existingCompany.State = company.State;
+                    existingCompany.PhoneNumber = company.PhoneNumber;
+                    existingCompany.Logo = company.Logo;
+                    existingCompany.CompanyName = company.CompanyName;
+                    existingCompany.City = company.City;
+                    existingCompany.Chips = company.Chips;
+
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            return;
         }
+    
 
         public bool isCompany(string id)
         {
