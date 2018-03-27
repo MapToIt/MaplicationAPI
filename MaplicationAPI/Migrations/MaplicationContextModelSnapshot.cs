@@ -65,17 +65,17 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<int>("StateId");
+                    b.Property<int?>("StateId");
 
                     b.Property<string>("Street");
 
-                    b.Property<int>("StreetNumber");
+                    b.Property<int?>("StreetNumber");
 
                     b.Property<string>("Url");
 
                     b.Property<string>("UserId");
 
-                    b.Property<int>("ZipCode");
+                    b.Property<int?>("ZipCode");
 
                     b.HasKey("CompanyId");
 
@@ -306,8 +306,7 @@ namespace MaplicationAPI.Migrations
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("StateId");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Event", b =>
