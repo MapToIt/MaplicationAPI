@@ -35,6 +35,17 @@ namespace MaplicationAPI.Repositories
             _context.SaveChanges();
         }
 
+        public List<Tables> GetTablesByMap(int mapId)
+        {
+            return _context.Tables.AsNoTracking().Include("Company").Where(t => t.MapId == mapId).ToList();
+        }
+
+        public void AddTable(Tables table)
+        {
+            _context.Tables.Add(table);
+            _context.SaveChanges();
+        }
+
     }
 }
   

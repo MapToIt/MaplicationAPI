@@ -29,7 +29,7 @@ namespace MaplicationAPI.Controllers
         }
 
         //GET api/Map/Details/1
-        [HttpGet("Details/{id}")]
+        [HttpGet("Details/{eventId}")]
         public Map GetMap(int eventId)
         {
             return _MapService.GetMap(eventId);
@@ -48,5 +48,26 @@ namespace MaplicationAPI.Controllers
             return;
             //return CreatedAtRoute("DefaultApi", new { id = book.Book_Id }, book);
         }
+
+        //GET api/Map/Tables/1
+        [HttpGet("Tables/{mapId}")]
+        public List<Tables> GetTablesByMap(int mapId)
+        {
+            return _MapService.GetTablesByMap(mapId);
+        }
+
+        //POST api/Map/Tables/Add
+        [HttpPost("Tables/Add")]
+        public void AddTable([FromBody]Tables table)
+        {
+            if (!ModelState.IsValid)
+            {
+                Console.Write("ModelState invalid");
+                return;
+            }
+            _MapService.AddTable(table);
+            return;
+        }
+
     }
 }
