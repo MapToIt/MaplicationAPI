@@ -26,7 +26,7 @@ namespace MaplicationAPI.Services
         {
             bool isAttendee = _attendeeRepository.isAttendee(id);
             bool isCompany = _companyRepository.isCompany(id);
-            bool isCoordinator = _coordinatorRepository.isCoordinator(id);
+            bool isCoordinator = _coordinatorRepository.IsCoordinator(id);
 
             return isAttendee ? "Attendee" : (isCoordinator ? "Coordinator" : (isCompany ? "Company" : null));
         }
