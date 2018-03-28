@@ -33,7 +33,11 @@ namespace MaplicationAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",
-                    builder => builder.AllowAnyOrigin());
+                    builder => {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                    });
             });
 
             services.Configure<MvcOptions>(options =>
@@ -56,10 +60,7 @@ namespace MaplicationAPI
             }
 
             app.UseMvc();
-            app.UseCors(builder =>
-                builder.AllowAnyOrigin()
-                        .AllowAnyHeader()
-            );
+            app.UseCors("AllowAllOrigins");
         }
     }
 }
