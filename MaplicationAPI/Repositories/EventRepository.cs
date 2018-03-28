@@ -20,12 +20,12 @@ namespace MaplicationAPI.Repositories
 
         public List<Event> BrowseEvents()
         {
-            return _context.Event.AsNoTracking().Include("State").ToList();
+            return _context.Event.AsNoTracking().Include("State").Include("Coordinator").ToList();
         }
 
         public Event BrowseEventById(int id)
         {
-            return _context.Event.AsNoTracking().Include("State").FirstOrDefault(e => e.EventId == id);
+            return _context.Event.AsNoTracking().Include("State").Include("Coordinator").FirstOrDefault(e => e.EventId == id);
         }
 
         public void AddEvent(Event _event)
