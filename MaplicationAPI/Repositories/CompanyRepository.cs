@@ -18,6 +18,64 @@ namespace MaplicationAPI.Repositories
             _context = context;
         }
 
+        public List<Company> BrowseCompanies()
+        {
+            return _context.Company.AsNoTracking().ToList();
+        }
+
+        public Company GetCompany(string id)
+        {
+            return (from c in _context.Set<Company>()
+                    where c.UserId == id
+                    select c).SingleOrDefault();
+        }
+
+        public Company InsertCompany(Company company)
+        {
+            _context.Company.Add(company);
+            _context.SaveChanges();
+
+            return company;
+        }
+
+        public Company UpdateCompany(Company company)
+        {
+            if (company != null)
+            {
+                var existingCompany = _context.Company.Where(c => c.UserId == company.UserId).FirstOrDefault();
+
+                if (existingCompany != null)
+                {
+                    existingCompany.ZipCode = company.ZipCode;
+                    existingCompany.UserId = company.UserId;
+                    existingCompany.Url = company.Url;
+                    existingCompany.StreetNumber = company.StreetNumber;
+                    existingCompany.Street = company.Street;
+                    existingCompany.StateId = company.StateId;
+                    existingCompany.State = company.State;
+                    existingCompany.PhoneNumber = company.PhoneNumber;
+                    existingCompany.Logo = company.Logo;
+                    existingCompany.CompanyName = company.CompanyName;
+                    existingCompany.City = company.City;
+                    existingCompany.Chips = company.Chips;
+
+                    _context.SaveChanges();
+
+                    return existingCompany;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+           
+        }
+    
+
         public bool isCompany(string id)
         {
             return _context.Company.Any(a => a.UserId == id);

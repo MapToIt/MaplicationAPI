@@ -17,5 +17,5 @@ namespace MaplicationAPI.EntityFramework
 
         [ForeignKey("EventId")]
         public Event Event { get; set; }
-}
+    }
 }
