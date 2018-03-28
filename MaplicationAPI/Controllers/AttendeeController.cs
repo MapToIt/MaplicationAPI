@@ -21,11 +21,33 @@ namespace MaplicationAPI.Controllers
             _attendeeService = new AttendeeService(attendeeRepository);
         }
 
-        // GET api/attendee
+        // GET all api/attendee
         [HttpGet]
         public List<Attendee> Get()
         {
             return _attendeeService.GetAttendees();
         }
+
+        // GET one api/attendee/id
+        [HttpGet("{id}")]
+        public Attendee GetAttendee(string id)
+        {
+            return _attendeeService.GetAttendee(id);
+        }
+
+        //PUT one attendee api/Attendee
+        [HttpPut]
+        public void InsertAttendee([FromBody] Attendee attendee)
+        {
+            _attendeeService.InsertAttendee(attendee);
+        }
+
+        //POST api/Attendee
+        [HttpPost]
+        public void UpdateAttendee([FromBody] Attendee attendee)
+        {
+            _attendeeService.UpdateAttendee(attendee);
+        }
+
     }
 }
