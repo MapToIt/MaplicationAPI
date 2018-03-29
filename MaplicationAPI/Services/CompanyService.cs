@@ -26,15 +26,21 @@ namespace MaplicationAPI.Services
             return _companyRepository.GetCompany(id);
         }
 
-        public void InsertCompany(Company company)
+        public Company InsertCompany(Company company)
         {
-            _companyRepository.InsertCompany(company);
+            return _companyRepository.InsertCompany(company);
         }
 
-        public void UpdateCompany(Company company)
+        public Company UpdateCompany(Company company)
         {
             if (_companyRepository.isCompany(company.UserId))
-                _companyRepository.UpdateCompany(company);
+            {
+                return _companyRepository.UpdateCompany(company);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public bool isCompany(string id)

@@ -30,13 +30,15 @@ namespace MaplicationAPI.Repositories
                     select c).SingleOrDefault();
         }
 
-        public void InsertCompany(Company company)
+        public Company InsertCompany(Company company)
         {
             _context.Company.Add(company);
             _context.SaveChanges();
+
+            return company;
         }
 
-        public void UpdateCompany(Company company)
+        public Company UpdateCompany(Company company)
         {
             if (company != null)
             {
@@ -58,13 +60,19 @@ namespace MaplicationAPI.Repositories
                     existingCompany.Chips = company.Chips;
 
                     _context.SaveChanges();
+
+                    return existingCompany;
                 }
                 else
                 {
-                    return;
+                    return null;
                 }
             }
-            return;
+            else
+            {
+                return null;
+            }
+           
         }
     
 
