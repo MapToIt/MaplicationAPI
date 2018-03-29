@@ -26,15 +26,17 @@ namespace MaplicationAPI.Services
             return _attendeeRepository.GetAttendee(id);
         }
 
-        public void InsertAttendee(Attendee attendee)
+        public Attendee InsertAttendee(Attendee attendee)
         {
-            _attendeeRepository.InsertAttendee(attendee);
+            return _attendeeRepository.InsertAttendee(attendee);
         }
 
-        public void UpdateAttendee(Attendee attendee)
+        public Attendee UpdateAttendee(Attendee attendee)
         {
-            if(_attendeeRepository.isAttendee(attendee.UserId))
-                _attendeeRepository.UpdateAttendee(attendee);
+            if (_attendeeRepository.isAttendee(attendee.UserId))
+                return _attendeeRepository.UpdateAttendee(attendee);
+            else
+                return null;
         }
 
         public bool isAttendee(string id)

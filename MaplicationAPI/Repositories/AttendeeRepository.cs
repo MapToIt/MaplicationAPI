@@ -31,13 +31,14 @@ namespace MaplicationAPI.Repositories
                     select c).SingleOrDefault();
         }
 
-        public void InsertAttendee(Attendee attendee)
+        public Attendee InsertAttendee(Attendee attendee)
         {
             _context.Attendee.Add(attendee);
             _context.SaveChanges();
+            return attendee;
         }
 
-        public void UpdateAttendee(Attendee attendee)
+        public Attendee UpdateAttendee(Attendee attendee)
         {
             if (attendee != null)
             {
@@ -56,13 +57,14 @@ namespace MaplicationAPI.Repositories
                     existingAttendee.Degree = attendee.Degree;
                     existingAttendee.Chips = attendee.Chips;
                     _context.SaveChanges();
+                    return existingAttendee;
                 }
                 else
                 {
-                    return;
+                    return null;
                 }
             }
-            return;
+            return null;
         }
 
     

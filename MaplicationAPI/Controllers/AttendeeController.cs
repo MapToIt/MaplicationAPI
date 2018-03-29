@@ -37,16 +37,16 @@ namespace MaplicationAPI.Controllers
 
         //PUT one attendee api/Attendee
         [HttpPut]
-        public void InsertAttendee([FromBody] Attendee attendee)
+        public Attendee InsertAttendee([FromBody] Attendee attendee)
         {
-            _attendeeService.InsertAttendee(attendee);
+            return _attendeeService.InsertAttendee(attendee);
         }
 
         //POST api/Attendee
         [HttpPost]
-        public void UpdateAttendee([FromBody] Attendee attendee)
+        public Attendee UpdateAttendee([FromBody] Attendee attendee)
         {
-            _attendeeService.UpdateAttendee(attendee);
+            return _attendeeService.UpdateAttendee(attendee);
         }
 
     }

@@ -11,8 +11,8 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         List<Attendee> BrowseAttendees();
 
         Attendee GetAttendee(string id);
-        void InsertAttendee(Attendee attendee);
-        void UpdateAttendee(Attendee attendee);
+        Attendee InsertAttendee(Attendee attendee);
+        Attendee UpdateAttendee(Attendee attendee);
         bool isAttendee(string id);
     }
 }
