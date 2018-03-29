@@ -22,7 +22,7 @@ namespace MaplicationAPI.EntityFramework
         public string Resume { get; set; }
         public string Degree { get; set; }
         public string University { get; set; }
-        public string Chips { get; set; }
+        public Tags[] Chips { get; set; }
         public string UserId { get; set; }
 
         [NotMapped]
