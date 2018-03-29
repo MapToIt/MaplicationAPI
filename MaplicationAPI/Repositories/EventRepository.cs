@@ -28,6 +28,11 @@ namespace MaplicationAPI.Repositories
             return _context.Event.AsNoTracking().Include("State").Include("Coordinator").FirstOrDefault(e => e.EventId == id);
         }
 
+        public List<Event> GetEventsByCoordId(int coordId)
+        {
+            return _context.Event.AsNoTracking().Include("State").Where(e => e.CoordinatorId == coordId).ToList();
+        }
+
         public void AddEvent(Event _event)
         {
             _context.Event.Add(_event);
