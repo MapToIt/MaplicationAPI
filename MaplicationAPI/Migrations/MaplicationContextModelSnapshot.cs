@@ -25,8 +25,6 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("AttendeeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Chips");
-
                     b.Property<string>("Degree");
 
                     b.Property<string>("Email");
@@ -54,8 +52,6 @@ namespace MaplicationAPI.Migrations
                 {
                     b.Property<int>("CompanyId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Chips");
 
                     b.Property<string>("City");
 
@@ -267,9 +263,17 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("TagId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("AttendeeId");
+
+                    b.Property<int?>("CompanyId");
+
                     b.Property<string>("Tag");
 
                     b.HasKey("TagId");
+
+                    b.HasIndex("AttendeeId");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Tags");
                 });
@@ -364,6 +368,17 @@ namespace MaplicationAPI.Migrations
                         .WithMany()
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.Tags", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.Attendee")
+                        .WithMany("Chips")
+                        .HasForeignKey("AttendeeId");
+
+                    b.HasOne("MaplicationAPI.EntityFramework.Company")
+                        .WithMany("Chips")
+                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.User", b =>

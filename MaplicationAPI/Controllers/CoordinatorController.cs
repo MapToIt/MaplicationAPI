@@ -38,21 +38,16 @@ namespace MaplicationAPI.Controllers
 
         //POST api/Coordinator
         [HttpPost()]
-        public void AddCoord([FromBody]Coordinator _Coordinator)
+        public Coordinator AddCoord([FromBody]Coordinator _Coordinator)
         {
-            
-            _CoordinatorService.AddCoord(_Coordinator);
-            return;
-           
+            return _CoordinatorService.AddCoord(_Coordinator);
         }
 
         //PUT api/Coordinator
         [HttpPut()]
-        public void UpdateCoord([FromBody]Coordinator _Coordinator)
+        public Coordinator UpdateCoord([FromBody]Coordinator _Coordinator)
         {
-            
-            _CoordinatorService.UpdateCoord(_Coordinator);
-            return;
+            return _CoordinatorService.UpdateCoord(_Coordinator); ;
         }
     }
 }

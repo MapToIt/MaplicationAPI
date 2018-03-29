@@ -33,15 +33,17 @@ namespace MaplicationAPI.Repositories
             return _context.Coordinator.Any(a => a.UserId == id);
         }
 
-        public void AddCoord(Coordinator coordinator)
+        public Coordinator AddCoord(Coordinator coordinator)
         {
             if(coordinator != null) {
                 _context.Coordinator.Add(coordinator);
                 _context.SaveChanges();
             }
+
+            return coordinator;
         }
 
-        public void UpdateCoord(Coordinator coordinator)
+        public Coordinator UpdateCoord(Coordinator coordinator)
         {
             if(coordinator != null)
             {
@@ -55,13 +57,15 @@ namespace MaplicationAPI.Repositories
                     existingCoord.PhoneNumber = coordinator.PhoneNumber;
 
                     _context.SaveChanges();
+
+                    return existingCoord;
                 }
                 else
                 {
-                    return;
+                    return null;
                 }
             }
-            return;
+            return null;
         }
 
     }
