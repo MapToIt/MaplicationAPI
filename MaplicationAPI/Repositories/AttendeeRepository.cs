@@ -54,14 +54,7 @@ namespace MaplicationAPI.Repositories
                     existingAttendee.FirstName = attendee.FirstName;
                     existingAttendee.Email = attendee.Email;
                     existingAttendee.Degree = attendee.Degree;
-
-                    foreach(Tags tag in attendee.Chips)
-                    {
-                        if (!existingAttendee.Chips.Contains(tag))
-                        {
-                            existingAttendee.Chips.Add(tag);
-                        }
-                    }
+                    existingAttendee.Chips = attendee.Chips;
 
                     _context.SaveChanges();
                 }
