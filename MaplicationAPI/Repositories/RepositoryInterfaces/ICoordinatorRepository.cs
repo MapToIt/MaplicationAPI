@@ -9,8 +9,8 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     public interface ICoordinatorRepository
     {
         bool IsCoordinator(string id);
-        void UpdateCoord(Coordinator _coordinator);
-        void AddCoord(Coordinator _coordinator);
+        Coordinator UpdateCoord(Coordinator _coordinator);
+        Coordinator AddCoord(Coordinator _coordinator);
         List<Coordinator> BrowseCoords();
         Coordinator BrowseCoordById(string id);
     }

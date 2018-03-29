@@ -26,6 +26,11 @@ namespace MaplicationAPI.Services
             return _EventRepository.BrowseEventById(id);
         }
 
+        public List<Event> GetEventsByCoordId(int coordId)
+        {
+            return _EventRepository.GetEventsByCoordId(coordId);
+        }
+
         public void AddEvent(Event _event)
         {
             _EventRepository.AddEvent(_event);

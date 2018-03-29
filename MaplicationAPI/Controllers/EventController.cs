@@ -35,6 +35,13 @@ namespace MaplicationAPI.Controllers
             return _EventService.GetEventById(id);
         }
 
+        //GET api/Event/Coordinator/1
+        [HttpGet("Coordinator/{coordId}")]
+        public List<Event> GetEventsByCoordId(int coordId)
+        {
+            return _EventService.GetEventsByCoordId(coordId);
+        }
+
         //POST api/Event/Add
         [HttpPost("Add")]
         public void AddEvent([FromBody]Event _event)

@@ -32,14 +32,14 @@ namespace MaplicationAPI.Services
             return _coordinatorRepository.IsCoordinator(id);
         }
 
-        public void AddCoord(Coordinator _coordinator)
+        public Coordinator AddCoord(Coordinator _coordinator)
         {
-            _coordinatorRepository.AddCoord(_coordinator);
+            return _coordinatorRepository.AddCoord(_coordinator);
         }
 
-        public void UpdateCoord(Coordinator _coordinator)
+        public Coordinator UpdateCoord(Coordinator _coordinator)
         {
-            _coordinatorRepository.UpdateCoord(_coordinator);
+            return _coordinatorRepository.UpdateCoord(_coordinator);
         }
 
     }
