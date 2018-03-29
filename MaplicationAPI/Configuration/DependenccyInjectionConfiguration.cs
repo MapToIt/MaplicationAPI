@@ -14,6 +14,7 @@ namespace MaplicationAPI.Configuration
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IStateRepository, StateRepository>();
             services.AddScoped<IMapRepository, MapRepository>();
+            services.AddScoped<IChipsRepository, ChipsRepository>();
         }
     }
 }

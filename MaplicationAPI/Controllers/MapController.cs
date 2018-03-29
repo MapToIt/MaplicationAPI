@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MaplicationAPI.EntityFramework;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using MaplicationAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
