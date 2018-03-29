@@ -23,7 +23,7 @@ namespace MaplicationAPI.EntityFramework
         public int? ZipCode { get; set; }
         public string Logo { get; set; }
         public string Url { get; set; }
-        public Tags[] Chips { get; set; }
+        public string Chips { get; set; }
 
         [ForeignKey("StateId")]
         public State State { get; set; }
