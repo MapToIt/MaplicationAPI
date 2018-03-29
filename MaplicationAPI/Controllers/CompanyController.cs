@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using MaplicationAPI.EntityFramework;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using MaplicationAPI.Services;
+using System.Web.Http.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace MaplicationAPI.Controllers
@@ -39,16 +39,16 @@ namespace MaplicationAPI.Controllers
 
         //PUT one attendee api/Company
         [HttpPut]
-        public void InsertCompany([FromBody] Company company)
+        public Company InsertCompany([FromBody] Company company)
         {
-            _companyService.InsertCompany(company);
+            return _companyService.InsertCompany(company);
         }
 
         //POST api/Company
         [HttpPost]
-        public void UpdateCompany([FromBody] Company company)
+        public Company UpdateCompany([FromBody] Company company)
         {
-            _companyService.UpdateCompany(company);
+            return _companyService.UpdateCompany(company);
         }
     }
 }

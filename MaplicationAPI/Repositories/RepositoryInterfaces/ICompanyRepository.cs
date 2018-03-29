@@ -10,8 +10,8 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     {
         List<Company> BrowseCompanies();
         Company GetCompany(string id);
-        void InsertCompany(Company company);
-        void UpdateCompany(Company company);
+        Company InsertCompany(Company company);
+        Company UpdateCompany(Company company);
         bool isCompany(string id);
     }
 }
