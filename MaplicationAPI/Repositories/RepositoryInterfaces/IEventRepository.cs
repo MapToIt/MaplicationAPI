@@ -13,5 +13,6 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         List<Event> GetEventsByCoordId(int coordId);
         void AddEvent(Event _event);
         void UpdateEvent(Event _event);
+        List<Event> GetFutureEvents();
     }
 }
