@@ -12,6 +12,7 @@ namespace MaplicationAPI.EntityFramework
         public DbSet<Company> Company { get; set; }
         public DbSet<Coordinator> Coordinator { get; set; }
         public DbSet<Event> Event { get; set; }
+        public DbSet<EventAttendance> EventAttendance { get; set; }
         public DbSet<JobPostings> JobPostings { get; set; }
         public DbSet<Map> Map { get; set; }
         public DbSet<Notes> Notes { get; set; }
