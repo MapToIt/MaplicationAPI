@@ -143,7 +143,7 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("AttendanceId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("EventId");
+                    b.Property<int>("EventId");
 
                     b.Property<string>("UserId");
 
@@ -346,7 +346,8 @@ namespace MaplicationAPI.Migrations
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.Event", "Event")
                         .WithMany()
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MaplicationAPI.EntityFramework.UserTypes", "UserTypes")
                         .WithMany()
