@@ -46,6 +46,45 @@ namespace MaplicationAPI.Repositories
             _context.SaveChanges();
         }
 
+        public void UpdateTable(Tables table)
+        {
+            var existingTable = _context.Tables.Update(table);
+
+            if (existingTable != null)
+            {
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
+        }
+
+        public void UpdateMap(Map map)
+        {
+            var existingMap = _context.Map.Update(map);
+
+            if (existingMap != null)
+            {
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
+        }
+
+        public void DeleteTable(int tableId)
+        {
+            var toDelete = _context.Tables.Find(tableId);
+            _context.Tables.Remove(toDelete);
+            _context.SaveChanges();
+        }
+
     }
 }
   

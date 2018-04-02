@@ -42,5 +42,20 @@ namespace MaplicationAPI.Services
             _MapRepository.AddTable(table);
         }
 
+        public void UpdateTable(Tables table)
+        {
+            _MapRepository.UpdateTable(table);
+        }
+
+        public void UpdateMap(Map map)
+        {
+            _MapRepository.UpdateMap(map);
+        }
+
+        public void DeleteTable(int tableId)
+        {
+            _MapRepository.DeleteTable(tableId);
+        }
+
     }
 }
