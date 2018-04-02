@@ -37,7 +37,7 @@ namespace MaplicationAPI.Repositories
 
         public List<Tables> GetTablesByMap(int mapId)
         {
-            return _context.Tables.AsNoTracking().Include("Company").Where(t => t.MapId == mapId).ToList();
+            return _context.Tables.AsNoTracking().Include("Company").Include("Company.State").Where(t => t.MapId == mapId).ToList();
         }
 
         public void AddTable(Tables table)
