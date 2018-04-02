@@ -25,9 +25,7 @@ namespace MaplicationAPI.Repositories
 
         public Company GetCompany(string id)
         {
-            return (from c in _context.Set<Company>()
-                    where c.UserId == id
-                    select c).SingleOrDefault();
+            return _context.Company.Include(x => x.State).Where(x => x.UserId == id).FirstOrDefault();
         }
 
         public Company InsertCompany(Company company)
@@ -51,13 +49,14 @@ namespace MaplicationAPI.Repositories
                     existingCompany.Url = company.Url;
                     existingCompany.StreetNumber = company.StreetNumber;
                     existingCompany.Street = company.Street;
-                    existingCompany.StateId = company.StateId;
-                    existingCompany.State = company.State;
                     existingCompany.PhoneNumber = company.PhoneNumber;
                     existingCompany.Logo = company.Logo;
                     existingCompany.CompanyName = company.CompanyName;
                     existingCompany.City = company.City;
                     existingCompany.Chips = company.Chips;
+
+                    var state = _context.State.Where(x => x.StateName == company.State.StateName).FirstOrDefault();
+                    existingCompany.State = state;
 
                     _context.SaveChanges();
 

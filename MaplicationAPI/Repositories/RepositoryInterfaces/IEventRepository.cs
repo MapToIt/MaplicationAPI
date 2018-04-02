@@ -1,4 +1,5 @@
 ﻿using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         List<Event> GetEventsByCoordId(int coordId);
         void AddEvent(Event _event);
         void UpdateEvent(Event _event);
+        List<Event> GetFutureEvents();
+        List<Event> GetEventByFilter(EventFilter filter);
     }
 }

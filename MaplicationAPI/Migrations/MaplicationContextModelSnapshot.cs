@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace MaplicationAPI.Migrations
@@ -134,6 +136,26 @@ namespace MaplicationAPI.Migrations
                     b.HasIndex("StateId");
 
                     b.ToTable("Event");
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.EventAttendance", b =>
+                {
+                    b.Property<int>("AttendanceId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("EventId");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("UserTypeId");
+
+                    b.HasKey("AttendanceId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserTypeId");
+
+                    b.ToTable("EventAttendance");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.JobPostings", b =>
@@ -317,6 +339,19 @@ namespace MaplicationAPI.Migrations
                     b.HasOne("MaplicationAPI.EntityFramework.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.EventAttendance", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MaplicationAPI.EntityFramework.UserTypes", "UserTypes")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

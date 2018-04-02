@@ -1,4 +1,5 @@
 ﻿using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,6 +27,22 @@ namespace MaplicationAPI.Repositories
         public Event BrowseEventById(int id)
         {
             return _context.Event.AsNoTracking().Include("State").Include("Coordinator").FirstOrDefault(e => e.EventId == id);
+
+        }
+
+        public List<Event> GetEventByFilter(EventFilter filter)
+        {
+            return _context.Event
+                    .AsNoTracking()
+                    .Include(x => x.State)
+                    .Include(x => x.Coordinator)
+                    .Where(matchesFilter(filter))
+                    .ToList();
+        }
+         
+        public List<Event> GetFutureEvents()
+        {
+            return _context.Event.AsNoTracking().Include(x => x.State).Include(x => x.Coordinator).Where(x => x.EndTime > DateTime.Now).OrderBy(x => x.StartTime).ToList();
         }
 
         public List<Event> GetEventsByCoordId(int coordId)
@@ -53,6 +70,16 @@ namespace MaplicationAPI.Repositories
                 return;
             }
             return;
+        }
+
+        private System.Linq.Expressions.Expression<System.Func<Event, bool>> matchesFilter(EventFilter filter)
+        {
+            if (filter == null) { return events => false; }
+
+            return events =>
+                (filter.Start == null || events.StartTime >= filter.Start) &&
+                (filter.End == null || events.StartTime <= filter.End) &&
+                (filter.State == null || events.State.StateId == filter.State.StateId);
         }
     }
 }
