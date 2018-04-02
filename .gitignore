@@ -11,3 +11,5 @@ MaplicationAPI/bin/Debug/netcoreapp2.0/MaplicationAPI.runtimeconfig.dev.json
 MaplicationAPI/obj/Debug/netcoreapp2.0/MaplicationAPI.csproj.CoreCompileInputs.cache
 MaplicationAPI/obj/project.assets.json
 MaplicationAPI/MaplicationAPI.csproj.user
+MaplicationAPI/bin/Debug/netcoreapp2.0/MaplicationAPI.runtimeconfig.json
+MaplicationAPI/obj/Debug/netcoreapp2.0/MaplicationAPI.AssemblyInfo.cs

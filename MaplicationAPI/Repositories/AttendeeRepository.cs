@@ -55,6 +55,7 @@ namespace MaplicationAPI.Repositories
                     existingAttendee.Email = attendee.Email;
                     existingAttendee.Degree = attendee.Degree;
                     existingAttendee.Chips = attendee.Chips;
+
                     _context.SaveChanges();
                 }
                 else

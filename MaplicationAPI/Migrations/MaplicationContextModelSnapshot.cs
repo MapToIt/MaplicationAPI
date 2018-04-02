@@ -25,6 +25,8 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("AttendeeId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Chips");
+
                     b.Property<string>("Degree");
 
                     b.Property<string>("Email");
@@ -52,6 +54,8 @@ namespace MaplicationAPI.Migrations
                 {
                     b.Property<int>("CompanyId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Chips");
 
                     b.Property<string>("City");
 
@@ -132,6 +136,26 @@ namespace MaplicationAPI.Migrations
                     b.HasIndex("StateId");
 
                     b.ToTable("Event");
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.EventAttendance", b =>
+                {
+                    b.Property<int>("AttendanceId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("EventId");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("UserTypeId");
+
+                    b.HasKey("AttendanceId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserTypeId");
+
+                    b.ToTable("EventAttendance");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.JobPostings", b =>
@@ -263,17 +287,9 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("TagId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AttendeeId");
-
-                    b.Property<int?>("CompanyId");
-
                     b.Property<string>("Tag");
 
                     b.HasKey("TagId");
-
-                    b.HasIndex("AttendeeId");
-
-                    b.HasIndex("CompanyId");
 
                     b.ToTable("Tags");
                 });
@@ -326,6 +342,19 @@ namespace MaplicationAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.EventAttendance", b =>
+                {
+                    b.HasOne("MaplicationAPI.EntityFramework.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MaplicationAPI.EntityFramework.UserTypes", "UserTypes")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("MaplicationAPI.EntityFramework.JobPostings", b =>
                 {
                     b.HasOne("MaplicationAPI.EntityFramework.Company", "Company")
@@ -368,17 +397,6 @@ namespace MaplicationAPI.Migrations
                         .WithMany()
                         .HasForeignKey("MapId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MaplicationAPI.EntityFramework.Tags", b =>
-                {
-                    b.HasOne("MaplicationAPI.EntityFramework.Attendee")
-                        .WithMany("Chips")
-                        .HasForeignKey("AttendeeId");
-
-                    b.HasOne("MaplicationAPI.EntityFramework.Company")
-                        .WithMany("Chips")
-                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.User", b =>

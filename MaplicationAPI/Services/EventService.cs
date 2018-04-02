@@ -40,5 +40,10 @@ namespace MaplicationAPI.Services
         {
             _EventRepository.UpdateEvent(_event);
         }
+
+        public List<Event> GetFutureEvents()
+        {
+            return _EventRepository.GetFutureEvents();
+        }
     }
 }
