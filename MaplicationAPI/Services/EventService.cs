@@ -1,4 +1,5 @@
 ﻿using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,11 @@ namespace MaplicationAPI.Services
         public List<Event> GetFutureEvents()
         {
             return _EventRepository.GetFutureEvents();
+        }
+
+        public List<Event> GetEventByFilter(EventFilter filter)
+        {
+            return _EventRepository.GetEventByFilter(filter);
         }
     }
 }

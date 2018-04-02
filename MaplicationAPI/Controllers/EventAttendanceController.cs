@@ -23,13 +23,6 @@ namespace MaplicationAPI.Controllers
             _eventAttendanceService = new EventAttendanceService(eventAttendanceRepository, attendeeRepository, companyRepository, coordinatorRepository);
         }
 
-        // GET one api/eventattendance/attendee/{id}
-        [HttpGet("attendee/{id}")]
-        public List<EventAttendance> GetEventAttendanceByAttendee(int id)
-        {
-            return _eventAttendanceService.GetEventAttendanceByAttendee(id);
-        }
-
         // GET one api/eventattendance/company/{id}
         [HttpGet("company/{id}")]
         public List<EventAttendance> GetCompanyAttendanceByEvent(int id)
@@ -41,7 +34,7 @@ namespace MaplicationAPI.Controllers
         [HttpGet("attendee/{id}")]
         public List<EventAttendance> GetAttendeeAttendanceByEvent(int id)
         {
-            return _eventAttendanceService.GetEventAttendanceByCompany(id);
+            return _eventAttendanceService.GetEventAttendanceByAttendee(id);
         }
 
         // GET one api/eventattendance/event/{id}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using MaplicationAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,13 @@ namespace MaplicationAPI.Controllers
         public Event GetEventById(int id)
         {
             return _EventService.GetEventById(id);
+        }
+
+        //POST api/Event/Add
+        [HttpPost("Filter")]
+        public List<Event> GetEventByFilter([FromBody]EventFilter filter)
+        {
+            return _EventService.GetEventByFilter(filter);
         }
 
         // GET api/Event/FutureEvents
