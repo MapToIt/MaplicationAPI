@@ -26,10 +26,10 @@ namespace MaplicationAPI.Services
             return _MapRepository.GetMap(eventId);
         }
 
-        public void AddMap(Map map)
+        public Map AddMap(Map map)
         {
-            _MapRepository.AddMap(map);
-            return;
+
+            return _MapRepository.AddMap(map); ;
         }
 
         public List<Tables> GetTablesByMap(int mapId)

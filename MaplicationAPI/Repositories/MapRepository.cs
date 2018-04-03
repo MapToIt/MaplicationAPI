@@ -29,10 +29,11 @@ namespace MaplicationAPI.Repositories
             return _context.Map.AsNoTracking().Include("Event").Include("Event.State").Include("Event.Coordinator").FirstOrDefault(m => m.EventId == eventId);
         }
 
-        public void AddMap(Map map)
+        public Map AddMap(Map map)
         {
             _context.Map.Add(map);
             _context.SaveChanges();
+            return _context.Map.Where(m => m.EventId == map.EventId).FirstOrDefault();
         }
 
         public List<Tables> GetTablesByMap(int mapId)

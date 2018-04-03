@@ -22,6 +22,7 @@ namespace MaplicationAPI.EntityFramework
         public DbSet<Tags> Tags { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserTypes> UserTypes { get; set; }
+        public DbSet<RatingType> RatingType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
