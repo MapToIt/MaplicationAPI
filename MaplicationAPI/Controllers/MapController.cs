@@ -38,15 +38,15 @@ namespace MaplicationAPI.Controllers
 
         //POST api/Map/Add
         [HttpPost("Add")]
-        public void AddMap([FromBody]Map map)
+        public Map AddMap([FromBody]Map map)
         {
             if (!ModelState.IsValid)
             {
-                return;
+                return null;
                 //return BadRequest(ModelState);
             }
-            _MapService.AddMap(map);
-            return;
+
+            return _MapService.AddMap(map); ;
             //return CreatedAtRoute("DefaultApi", new { id = book.Book_Id }, book);
         }
 

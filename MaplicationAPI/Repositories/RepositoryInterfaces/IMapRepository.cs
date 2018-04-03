@@ -10,7 +10,7 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
     {
         List<Map> GetAllMaps();
         Map GetMap(int eventId);
-        void AddMap(Map map);
+        Map AddMap(Map map);
         List<Tables> GetTablesByMap(int mapId);
         void AddTable(Tables table);
         void UpdateTable(Tables table);

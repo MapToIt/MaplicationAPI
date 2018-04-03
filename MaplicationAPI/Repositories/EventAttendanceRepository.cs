@@ -64,6 +64,13 @@ namespace MaplicationAPI.Repositories
         {
             EventAttendance addedEventAttendance = new EventAttendance();
 
+            Boolean exists = _context.EventAttendance.Any(x => x.UserId == rsvp.UserId && x.EventId == rsvp.Event);
+
+            if (exists)
+            {
+                return null;
+            }
+
             addedEventAttendance.AttendanceId = 0;
             addedEventAttendance.Event = _context.Event.Where(x => x.EventId == rsvp.Event).FirstOrDefault();
             addedEventAttendance.UserId = rsvp.UserId;

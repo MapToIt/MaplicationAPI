@@ -68,9 +68,11 @@ namespace MaplicationAPI.Services
 
         public EventAttendance InsertEventAttendance(RSVP rsvp)
         {
-            if(rsvp.UserType.ToLower() == "attendee")
+            rsvp.UserType = _userService.GetUserType(rsvp.UserId);
+
+            if (rsvp.UserType.ToLower() == "attendee")
             {
-                rsvp.UserType = _userService.GetUserType(rsvp.UserId);
+                return _eventAttendanceRepository.InsertEventAttendance(rsvp);
             }
             else if (rsvp.UserType.ToLower() == "company")
             {
@@ -82,6 +84,7 @@ namespace MaplicationAPI.Services
                     table.CompanyId = company.CompanyId;
                     table.Company = company;
                     _mapService.UpdateTable(table);
+                    return _eventAttendanceRepository.InsertEventAttendance(rsvp);
                 }
                 else
                 {
@@ -93,8 +96,6 @@ namespace MaplicationAPI.Services
             {
                 return null;
             }
-
-            return _eventAttendanceRepository.InsertEventAttendance(rsvp);
         }
     }
 }
