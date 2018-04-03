@@ -13,3 +13,21 @@ MaplicationAPI/obj/project.assets.json
 MaplicationAPI/MaplicationAPI.csproj.user
 MaplicationAPI/bin/Debug/netcoreapp2.0/MaplicationAPI.runtimeconfig.json
 MaplicationAPI/obj/Debug/netcoreapp2.0/MaplicationAPI.AssemblyInfo.cs
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/Out/web.config
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/Out/appsettings.json
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/Out/appsettings.Development.json
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/Out/MaplicationAPI.runtimeconfig.json
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/Out/MaplicationAPI.deps.json
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/MaplicationAPI.SourceManifest.xml
+MaplicationAPI/obj/Release/netcoreapp2.0/PubTmp/MaplicationAPI.Parameters.xml
+MaplicationAPI/obj/Release/netcoreapp2.0/MaplicationAPI.csproj.FileListAbsolute.txt
+MaplicationAPI/obj/Any CPU/Release/netcoreapp2.0/microsoft.aspnetcore.mvc.razor.viewcompilation.rsp
+MaplicationAPI/obj/Any CPU/Release/netcoreapp2.0/MaplicationAPI.csproj.FileListAbsolute.txt
+MaplicationAPI/obj/Any CPU/Release/netcoreapp2.0/MaplicationAPI.AssemblyInfo.cs
+MaplicationAPI/bin/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.json
+MaplicationAPI/bin/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.dev.json
+MaplicationAPI/bin/Release/netcoreapp2.0/MaplicationAPI.deps.json
+MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.json
+MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.dev.json
+MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.deps.json
+MaplicationAPI/Properties/PublishProfiles/MaplicationAPI20180402115945 - Web Deploy.pubxml

@@ -15,15 +15,17 @@ namespace MaplicationAPI.Services
         private readonly ICompanyRepository _companyRepository;
         private readonly ICoordinatorRepository _coordinatorRepository;
         private readonly UserService _userService;
+        private readonly MapService _mapService;
 
         public EventAttendanceService(IEventAttendanceRepository eventAttendanceRepository, IAttendeeRepository attendeeRepository,
-                            ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository)
+                            ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository, IMapRepository _mapRepository)
         {
             _eventAttendanceRepository = eventAttendanceRepository;
             _attendeeRepository = attendeeRepository;
             _companyRepository = companyRepository;
             _coordinatorRepository = coordinatorRepository;
 
+            _mapService = new MapService(_mapRepository);
             _userService = new UserService(_attendeeRepository, _companyRepository, _coordinatorRepository);
         }
 
@@ -67,6 +69,18 @@ namespace MaplicationAPI.Services
         public EventAttendance InsertEventAttendance(RSVP rsvp)
         {
             rsvp.UserType = _userService.GetUserType(rsvp.UserId);
+
+
+
+            if (rsvp.UserType.ToLower() == "company")
+            {
+                Tables table = _mapService.GetEmptyTable(rsvp.Event);
+                Company company = _companyRepository.GetCompany(rsvp.UserId);
+                table.CompanyId = company.CompanyId;
+                table.Company = company;
+                _mapService.UpdateTable(table);
+            }
+
             return _eventAttendanceRepository.InsertEventAttendance(rsvp);
         }
     }

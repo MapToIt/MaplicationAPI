@@ -57,5 +57,10 @@ namespace MaplicationAPI.Services
             _MapRepository.DeleteTable(tableId);
         }
 
+        public Tables GetEmptyTable(int eventId)
+        {
+            return _MapRepository.GetEmptyTable(eventId);
+        }
+
     }
 }

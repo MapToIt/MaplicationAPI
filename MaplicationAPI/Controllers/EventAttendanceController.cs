@@ -18,9 +18,9 @@ namespace MaplicationAPI.Controllers
         private readonly EventAttendanceService _eventAttendanceService;
 
         public EventAttendanceController(IEventAttendanceRepository eventAttendanceRepository, IAttendeeRepository attendeeRepository,
-                                    ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository)
+                                    ICompanyRepository companyRepository, ICoordinatorRepository coordinatorRepository, IMapRepository mapRepository)
         {
-            _eventAttendanceService = new EventAttendanceService(eventAttendanceRepository, attendeeRepository, companyRepository, coordinatorRepository);
+            _eventAttendanceService = new EventAttendanceService(eventAttendanceRepository, attendeeRepository, companyRepository, coordinatorRepository, mapRepository);
         }
 
         // GET one api/eventattendance/company/{id}

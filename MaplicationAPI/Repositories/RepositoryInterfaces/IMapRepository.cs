@@ -16,5 +16,6 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         void UpdateTable(Tables table);
         void UpdateMap(Map map);
         void DeleteTable(int tableId);
+        Tables GetEmptyTable(int eventId);
     }
 }  

@@ -84,6 +84,18 @@ namespace MaplicationAPI.Repositories
             _context.Tables.Remove(toDelete);
             _context.SaveChanges();
         }
+        
+        public Tables GetEmptyTable(int eventId)
+        {
+            Map map = _context.Map.Where(m => m.EventId == eventId).FirstOrDefault();
+
+            if (map != null)
+            {
+                return _context.Tables.Where(t => t.MapId == map.MapId).Where(t => t.CompanyId == null).FirstOrDefault();
+            }
+
+            return null;
+        }
 
     }
 }
