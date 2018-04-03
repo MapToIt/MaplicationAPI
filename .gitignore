@@ -31,3 +31,5 @@ MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.js
 MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.runtimeconfig.dev.json
 MaplicationAPI/bin/Any CPU/Release/netcoreapp2.0/MaplicationAPI.deps.json
 MaplicationAPI/Properties/PublishProfiles/MaplicationAPI20180402115945 - Web Deploy.pubxml
+package-lock.json
+MaplicationAPI/bin/pingme.txt

@@ -56,6 +56,7 @@ namespace MaplicationAPI.Services
         public List<Event> GetEventByFilter(EventFilter filter)
         {
             List<Event> events = _EventRepository.GetEventByFilter(filter);
+            List<Event> finalEvents = new List<Event>();
 
             if (filter.IsCompany)
             {
@@ -65,19 +66,18 @@ namespace MaplicationAPI.Services
                     if(map != null){
 
                         List<Tables> tables = _MapService.GetTablesByMap(map.MapId);
-                        if (tables.Count() == 0)
+                        if (tables.Count() != 0)
                         {
-                            events.Remove(e);
+                            finalEvents.Add(e);
                         }
                     }
-                    else
-                    {
-                        events.Remove(e);
-                    }
                 }
+            } else
+            {
+                finalEvents = events;
             }
 
-            return events;
+            return finalEvents;
         }
     }
 }
