@@ -1,4 +1,5 @@
 ﻿using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models;
 using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using System;
@@ -11,10 +12,15 @@ namespace MaplicationAPI.Services
     public class EventService
     {
         private readonly IEventRepository _EventRepository;
+        private readonly IMapRepository _MapRepository;
+        private readonly MapService _MapService;
 
-        public EventService(IEventRepository EventRepository)
+        public EventService(IEventRepository EventRepository, IMapRepository mapRepository)
         {
             _EventRepository = EventRepository;
+            _MapRepository = mapRepository;
+            _MapService = new MapService(_MapRepository);
+
         }
 
         public List<Event> GetEvents()
@@ -49,7 +55,29 @@ namespace MaplicationAPI.Services
 
         public List<Event> GetEventByFilter(EventFilter filter)
         {
-            return _EventRepository.GetEventByFilter(filter);
+            List<Event> events = _EventRepository.GetEventByFilter(filter);
+            List<Event> finalEvents = new List<Event>();
+
+            if (filter.IsCompany)
+            {
+                foreach (Event e in events)
+                {
+                    Map map = _MapService.GetMap(e.EventId);
+                    if(map != null){
+
+                        List<Tables> tables = _MapService.GetTablesByMap(map.MapId);
+                        if (tables.Count() != 0)
+                        {
+                            finalEvents.Add(e);
+                        }
+                    }
+                }
+            } else
+            {
+                finalEvents = events;
+            }
+
+            return finalEvents;
         }
     }
 }

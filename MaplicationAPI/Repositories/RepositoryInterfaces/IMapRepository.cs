@@ -13,7 +13,9 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         void AddMap(Map map);
         List<Tables> GetTablesByMap(int mapId);
         void AddTable(Tables table);
-        //Todo: Update Map
-        //Todo: Update Tables
+        void UpdateTable(Tables table);
+        void UpdateMap(Map map);
+        void DeleteTable(int tableId);
+        Tables GetEmptyTable(int eventId);
     }
 }  

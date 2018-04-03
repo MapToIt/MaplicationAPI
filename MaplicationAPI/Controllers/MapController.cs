@@ -70,5 +70,35 @@ namespace MaplicationAPI.Controllers
             return;
         }
 
+        //PUT api/Map/Tables
+        [HttpPut("Tables")]
+        public void UpdateTable([FromBody]Tables table)
+        {
+            if (!ModelState.IsValid)
+            {
+                return;
+            }
+            _MapService.UpdateTable(table);
+            return;
+        }
+
+        //PUT api/Map/Update
+        [HttpPut("Update")]
+        public void UpdateMap([FromBody]Map map)
+        {
+            if (!ModelState.IsValid)
+            {
+                return;
+            }
+            _MapService.UpdateMap(map);
+            return;
+        }
+
+        //DELETE api/Tables/{id}
+        [HttpDelete("Tables/{tableId}")]
+        public void DeleteTable(int tableId)
+        {
+            _MapService.DeleteTable(tableId);
+        }
     }
 }
