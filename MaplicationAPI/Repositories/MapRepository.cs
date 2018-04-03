@@ -37,12 +37,51 @@ namespace MaplicationAPI.Repositories
 
         public List<Tables> GetTablesByMap(int mapId)
         {
-            return _context.Tables.AsNoTracking().Include("Company").Where(t => t.MapId == mapId).ToList();
+            return _context.Tables.AsNoTracking().Include("Company").Include("Company.State").Where(t => t.MapId == mapId).ToList();
         }
 
         public void AddTable(Tables table)
         {
             _context.Tables.Add(table);
+            _context.SaveChanges();
+        }
+
+        public void UpdateTable(Tables table)
+        {
+            var existingTable = _context.Tables.Update(table);
+
+            if (existingTable != null)
+            {
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
+        }
+
+        public void UpdateMap(Map map)
+        {
+            var existingMap = _context.Map.Update(map);
+
+            if (existingMap != null)
+            {
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+            return;
+        }
+
+        public void DeleteTable(int tableId)
+        {
+            var toDelete = _context.Tables.Find(tableId);
+            _context.Tables.Remove(toDelete);
             _context.SaveChanges();
         }
 
