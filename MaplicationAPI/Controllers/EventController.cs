@@ -17,9 +17,9 @@ namespace MaplicationAPI.Controllers
     {
         private readonly EventService _EventService;
 
-        public EventController(IEventRepository EventRepository)
+        public EventController(IEventRepository EventRepository, IMapRepository MapRepository)
         {
-            _EventService = new EventService(EventRepository);
+            _EventService = new EventService(EventRepository, MapRepository);
         }
 
         // GET api/Event/Details

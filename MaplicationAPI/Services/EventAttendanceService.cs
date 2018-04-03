@@ -68,17 +68,30 @@ namespace MaplicationAPI.Services
 
         public EventAttendance InsertEventAttendance(RSVP rsvp)
         {
-            rsvp.UserType = _userService.GetUserType(rsvp.UserId);
-
-
-
-            if (rsvp.UserType.ToLower() == "company")
+            if(rsvp.UserType.ToLower() == "attendee")
+            {
+                rsvp.UserType = _userService.GetUserType(rsvp.UserId);
+            }
+            else if (rsvp.UserType.ToLower() == "company")
             {
                 Tables table = _mapService.GetEmptyTable(rsvp.Event);
-                Company company = _companyRepository.GetCompany(rsvp.UserId);
-                table.CompanyId = company.CompanyId;
-                table.Company = company;
-                _mapService.UpdateTable(table);
+                if(table != null)
+                {
+                    rsvp.UserType = _userService.GetUserType(rsvp.UserId);
+                    Company company = _companyRepository.GetCompany(rsvp.UserId);
+                    table.CompanyId = company.CompanyId;
+                    table.Company = company;
+                    _mapService.UpdateTable(table);
+                }
+                else
+                {
+                    return null;
+                }
+                
+            }
+            else
+            {
+                return null;
             }
 
             return _eventAttendanceRepository.InsertEventAttendance(rsvp);

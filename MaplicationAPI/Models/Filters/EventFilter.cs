@@ -11,5 +11,6 @@ namespace MaplicationAPI.Models.Filters
         public State State { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+        public Boolean IsCompany { get; set; }
     }
 }
