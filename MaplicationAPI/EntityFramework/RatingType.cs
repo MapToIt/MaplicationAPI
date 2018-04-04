@@ -12,5 +12,6 @@ namespace MaplicationAPI.EntityFramework
         public int RatingId { get; set; }
 
         public string Rating { get; set; }
+        public int Value { get; set; }
     }
 }
