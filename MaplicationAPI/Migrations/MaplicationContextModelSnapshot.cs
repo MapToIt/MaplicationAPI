@@ -231,6 +231,8 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<string>("Rating");
 
+                    b.Property<int>("Value");
+
                     b.HasKey("RatingId");
 
                     b.ToTable("RatingType");
