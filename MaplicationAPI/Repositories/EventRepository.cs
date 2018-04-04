@@ -78,7 +78,7 @@ namespace MaplicationAPI.Repositories
 
             return events =>
                 (filter.Start == null || events.StartTime >= filter.Start) &&
-                (filter.End == null || events.StartTime <= filter.End) &&
+                (filter.End == null || events.EndTime <= filter.End) &&
                 (filter.State == null || events.State.StateId == filter.State.StateId);
         }
     }
