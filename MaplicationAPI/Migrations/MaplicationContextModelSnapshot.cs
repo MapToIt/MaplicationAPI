@@ -211,6 +211,8 @@ namespace MaplicationAPI.Migrations
 
                     b.Property<int>("RatingId");
 
+                    b.Property<string>("Recruiter");
+
                     b.HasKey("NoteId");
 
                     b.HasIndex("AttendeeId");

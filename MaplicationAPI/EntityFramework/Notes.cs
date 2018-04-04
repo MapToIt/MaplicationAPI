@@ -18,6 +18,7 @@ namespace MaplicationAPI.EntityFramework
         public int EventId { get; set; }
         public DateTime Date { get; set; }
         public int RatingId { get; set; }
+        public string Recruiter { get; set; }
 
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
