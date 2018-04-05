@@ -6,6 +6,8 @@ using MaplicationAPI.Configuration;
 using MaplicationAPI.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +30,21 @@ namespace MaplicationAPI
         {
             services.AddMvc();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => {
+                        builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                    });
+            });
+
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllOrigins"));
+            });
+
             var connection = @"Server=maplication.database.windows.net;Database=MaplicationAPI;Trusted_Connection=True;ConnectRetryCount=0;Trusted_Connection=False;Encrypt=True;User ID = dotnetapp; Password =password!1;";
             services.AddDbContext<MaplicationContext>(options => options.UseSqlServer(connection));
 
@@ -43,6 +60,7 @@ namespace MaplicationAPI
             }
 
             app.UseMvc();
+            app.UseCors("AllowAllOrigins");
         }
     }
 }

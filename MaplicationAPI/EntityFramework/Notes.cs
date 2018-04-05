@@ -14,13 +14,20 @@ namespace MaplicationAPI.EntityFramework
 
         public string Note { get; set; }
         public int CompanyId { get; set; }
-        public string Name { get; set; }
+        public int AttendeeId { get; set; }
+        public int EventId { get; set; }
         public DateTime Date { get; set; }
-        public string Major { get; set; }
-        public string email { get; set; }
+        public int RatingId { get; set; }
+        public string Recruiter { get; set; }
 
         [ForeignKey("CompanyId")]
-        public User Company { get; set; }
+        public Company Company { get; set; }
+        [ForeignKey("AttendeeId")]
+        public Attendee Attendee { get; set; }
+        [ForeignKey("EventId")]
+        public Event Event { get; set; }
+        [ForeignKey("RatingId")]
+        public RatingType Rating { get; set; }
 
     }
 }

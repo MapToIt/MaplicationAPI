@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MaplicationAPI",
+    "\\MaplicationAPI\\Controllers",
+    "\\MaplicationAPI\\Repositories",
+    "\\MaplicationAPI\\Services"
+  ],
+  "SelectedNode": "\\MaplicationAPI\\Repositories\\EventRepository.cs",
+  "PreviewInSolutionExplorer": false
+}

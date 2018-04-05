@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <StartupObject>MaplicationAPI.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE;RELEASE;NETCOREAPP2_0</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +14,23 @@
     <Compile Remove="Migrations\20180225181044_AddingNotesANDJobsANDEvents.Designer.cs" />
     <Compile Remove="Migrations\20180225182411_AddingMapANDTables.cs" />
     <Compile Remove="Migrations\20180225182411_AddingMapANDTables.Designer.cs" />
+    <Compile Remove="Migrations\20180308231422_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308231422_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232607_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232607_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232721_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232721_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308232822_RemoveCoordinatorIdFromEvent.cs" />
+    <Compile Remove="Migrations\20180308232822_RemoveCoordinatorIdFromEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180308233028_UpdateEvent.cs" />
+    <Compile Remove="Migrations\20180308233028_UpdateEvent.Designer.cs" />
+    <Compile Remove="Migrations\20180329143056_TagsIcollection.cs" />
+    <Compile Remove="Migrations\20180329143056_TagsIcollection.Designer.cs" />
+    <Compile Remove="Repositories\RepositoryInterfaces\TableRepository.cs" />
+    <Compile Remove="Repositories\TableRepository.cs" />
+    <Compile Remove="Repositories\RepositoryInterfaces\ITableRepository.cs" />
+    <Compile Remove="Controllers\TableController.cs" />
+    <Compile Remove="Services\TableService.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,10 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
