@@ -1,4 +1,5 @@
 ﻿using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models;
 using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using System;
@@ -27,9 +28,47 @@ namespace MaplicationAPI.Services
             return _NotesRepository.GetNoteById(id);
         }
 
-        public List<Notes> getNotesByFilter(NotesFilter filter)
+        public List<NoteModel> getNotesByFilter(NotesFilter filter)
         {
-            return _NotesRepository.getNotesByFilter(filter);
+            List<Notes> allNotes = _NotesRepository.getNotesByFilter(filter);
+            List<NoteModel> groupedNotes = new List<NoteModel>();
+
+            foreach (Notes note in allNotes)
+            {
+                if(groupedNotes.Count() == 0)
+                {
+                    NoteModel newNote = new NoteModel();
+                    newNote.notes = new List<Notes>();
+                    newNote.notes.Add(note);
+                    newNote.averageRating = note.RatingId;
+                    groupedNotes.Add(newNote);
+                }
+                else
+                {
+                    if (groupedNotes.Any(x => x.notes.Any(n => n.AttendeeId == note.AttendeeId)))
+                    {
+                        NoteModel newNote = groupedNotes.Where(x => x.notes.Any(n => n.AttendeeId == note.AttendeeId)).FirstOrDefault();
+                        newNote.notes.Add(note);
+                        newNote.averageRating += note.RatingId;
+                    }
+                    else
+                    {
+                        NoteModel newNote = new NoteModel();
+                        newNote.notes = new List<Notes>();
+                        newNote.notes.Add(note);
+                        newNote.averageRating = note.RatingId;
+                        groupedNotes.Add(newNote);
+                    }
+                }
+            }
+
+            foreach (NoteModel set in groupedNotes)
+            {
+                set.averageRating = set.averageRating / set.notes.Count();
+                set.notes = set.notes.OrderByDescending(n => n.Date).ToList();
+            }
+
+            return groupedNotes;
         }
 
         public Notes updateNote(Notes note)
