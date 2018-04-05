@@ -47,9 +47,21 @@ namespace MaplicationAPI.Repositories
 
         public Notes updateNote(Notes note)
         {
-            _context.Update(note);
+            Notes updatedNote = _context.Notes.Where(n => n.NoteId == note.NoteId).FirstOrDefault();
 
-            return _context.Notes.Where(n => n.NoteId == note.NoteId).FirstOrDefault();
+            if(updatedNote != null){
+                updatedNote.AttendeeId = note.AttendeeId;
+                updatedNote.CompanyId = note.CompanyId;
+                updatedNote.Date = note.Date;
+                updatedNote.EventId = note.EventId;
+                updatedNote.Note = note.Note;
+                updatedNote.RatingId = note.RatingId;
+                updatedNote.Recruiter = note.Recruiter;
+
+                _context.SaveChanges();
+            }
+
+            return note;
 
 
         }
@@ -58,6 +70,7 @@ namespace MaplicationAPI.Repositories
         {
             note.Date = DateTime.Now;
             _context.Notes.Add(note);
+            _context.SaveChanges();
 
             return note;
             

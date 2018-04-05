@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MaplicationAPI.EntityFramework;
+using MaplicationAPI.Models;
 using MaplicationAPI.Models.Filters;
 using MaplicationAPI.Repositories.RepositoryInterfaces;
 using MaplicationAPI.Services;
@@ -52,7 +53,7 @@ namespace MaplicationAPI.Controllers
 
         //POST by filter api/notes/filter
         [HttpPost("filter")]
-        public List<Notes> GetNotesByFilter([FromBody] NotesFilter filter)
+        public List<NoteModel> GetNotesByFilter([FromBody] NotesFilter filter)
         {
             return _notesService.getNotesByFilter(filter);
         }
