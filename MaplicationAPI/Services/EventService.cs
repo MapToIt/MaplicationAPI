@@ -68,7 +68,13 @@ namespace MaplicationAPI.Services
                         List<Tables> tables = _MapService.GetTablesByMap(map.MapId);
                         if (tables.Count() != 0)
                         {
-                            finalEvents.Add(e);
+                            int openTableCount = tables.Count(t => t.CompanyId == null);
+                            bool attending = tables.Any(t => t.CompanyId == filter.companyId);
+                            if (openTableCount > 0)
+                            {
+                                finalEvents.Add(e);
+                            }
+                            
                         }
                     }
                 }
