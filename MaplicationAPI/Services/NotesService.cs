@@ -40,7 +40,7 @@ namespace MaplicationAPI.Services
                     NoteModel newNote = new NoteModel();
                     newNote.notes = new List<Notes>();
                     newNote.notes.Add(note);
-                    newNote.averageRating = note.RatingId;
+                    newNote.averageRating = note.Rating.Value;
                     groupedNotes.Add(newNote);
                 }
                 else
@@ -49,14 +49,14 @@ namespace MaplicationAPI.Services
                     {
                         NoteModel newNote = groupedNotes.Where(x => x.notes.Any(n => n.AttendeeId == note.AttendeeId)).FirstOrDefault();
                         newNote.notes.Add(note);
-                        newNote.averageRating += note.RatingId;
+                        newNote.averageRating += note.Rating.Value;
                     }
                     else
                     {
                         NoteModel newNote = new NoteModel();
                         newNote.notes = new List<Notes>();
                         newNote.notes.Add(note);
-                        newNote.averageRating = note.RatingId;
+                        newNote.averageRating = note.Rating.Value;
                         groupedNotes.Add(newNote);
                     }
                 }
