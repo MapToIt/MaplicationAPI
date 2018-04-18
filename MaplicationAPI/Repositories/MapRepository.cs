@@ -41,10 +41,11 @@ namespace MaplicationAPI.Repositories
             return _context.Tables.AsNoTracking().Include("Company").Include("Company.State").Where(t => t.MapId == mapId).ToList();
         }
 
-        public void AddTable(Tables table)
+        public Tables AddTable(Tables table)
         {
             _context.Tables.Add(table);
             _context.SaveChanges();
+            return _context.Tables.FirstOrDefault(t => t.TableId == table.TableId);
         }
 
         public void UpdateTable(Tables table)

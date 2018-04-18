@@ -37,9 +37,9 @@ namespace MaplicationAPI.Services
             return _MapRepository.GetTablesByMap(mapId);
         }
 
-        public void AddTable(Tables table)
+        public Tables AddTable(Tables table)
         {
-            _MapRepository.AddTable(table);
+            return _MapRepository.AddTable(table);
         }
 
         public void UpdateTable(Tables table)
