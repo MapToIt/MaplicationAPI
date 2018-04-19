@@ -104,6 +104,18 @@ namespace MaplicationAPI.Migrations
                     b.ToTable("Coordinator");
                 });
 
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.EmploymentTypes", b =>
+                {
+                    b.Property<int>("TypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EmploymentType");
+
+                    b.HasKey("TypeId");
+
+                    b.ToTable("EmploymentTypes");
+                });
+
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Event", b =>
                 {
                     b.Property<int>("EventId")
@@ -163,17 +175,31 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("JobId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Chips");
+                    b.Property<bool>("Active");
+
+                    b.Property<int?>("BaseSalary");
 
                     b.Property<int>("CompanyId");
 
+                    b.Property<DateTime>("DatePosted");
+
                     b.Property<string>("Description");
 
+                    b.Property<int>("EmploymentTypeId");
+
                     b.Property<string>("JobTitle");
+
+                    b.Property<int?>("SalaryTypeId");
+
+                    b.Property<DateTime>("ValidThrough");
 
                     b.HasKey("JobId");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("EmploymentTypeId");
+
+                    b.HasIndex("SalaryTypeId");
 
                     b.ToTable("JobPostings");
                 });
@@ -245,6 +271,8 @@ namespace MaplicationAPI.Migrations
                     b.Property<int>("RecruiterId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("AlmaMater");
+
                     b.Property<int>("CompanyId");
 
                     b.Property<string>("Email");
@@ -264,6 +292,18 @@ namespace MaplicationAPI.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Recruiter");
+                });
+
+            modelBuilder.Entity("MaplicationAPI.EntityFramework.SalaryTypes", b =>
+                {
+                    b.Property<int>("TypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("SalaryType");
+
+                    b.HasKey("TypeId");
+
+                    b.ToTable("SalaryTypes");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.State", b =>
@@ -383,6 +423,15 @@ namespace MaplicationAPI.Migrations
                         .WithMany()
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MaplicationAPI.EntityFramework.EmploymentTypes", "EmploymentType")
+                        .WithMany()
+                        .HasForeignKey("EmploymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MaplicationAPI.EntityFramework.EmploymentTypes", "SalaryType")
+                        .WithMany()
+                        .HasForeignKey("SalaryTypeId");
                 });
 
             modelBuilder.Entity("MaplicationAPI.EntityFramework.Map", b =>

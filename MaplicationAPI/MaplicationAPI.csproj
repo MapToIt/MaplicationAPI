@@ -26,6 +26,8 @@
     <Compile Remove="Migrations\20180308233028_UpdateEvent.Designer.cs" />
     <Compile Remove="Migrations\20180329143056_TagsIcollection.cs" />
     <Compile Remove="Migrations\20180329143056_TagsIcollection.Designer.cs" />
+    <Compile Remove="Migrations\20180419201112_addRecuriterAndJob.cs" />
+    <Compile Remove="Migrations\20180419201112_addRecuriterAndJob.Designer.cs" />
     <Compile Remove="Repositories\RepositoryInterfaces\TableRepository.cs" />
     <Compile Remove="Repositories\TableRepository.cs" />
     <Compile Remove="Repositories\RepositoryInterfaces\ITableRepository.cs" />
