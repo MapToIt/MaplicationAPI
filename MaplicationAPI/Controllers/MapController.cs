@@ -59,15 +59,14 @@ namespace MaplicationAPI.Controllers
 
         //POST api/Map/Tables/Add
         [HttpPost("Tables/Add")]
-        public void AddTable([FromBody]Tables table)
+        public Tables AddTable([FromBody]Tables table)
         {
             if (!ModelState.IsValid)
             {
                 Console.Write("ModelState invalid");
-                return;
+                return null;
             }
-            _MapService.AddTable(table);
-            return;
+            return _MapService.AddTable(table);
         }
 
         //PUT api/Map/Tables

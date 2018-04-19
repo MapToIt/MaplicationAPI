@@ -12,7 +12,7 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
         Map GetMap(int eventId);
         Map AddMap(Map map);
         List<Tables> GetTablesByMap(int mapId);
-        void AddTable(Tables table);
+        Tables AddTable(Tables table);
         void UpdateTable(Tables table);
         void UpdateMap(Map map);
         void DeleteTable(int tableId);
