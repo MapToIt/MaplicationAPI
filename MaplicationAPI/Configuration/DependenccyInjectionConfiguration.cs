@@ -18,6 +18,8 @@ namespace MaplicationAPI.Configuration
             services.AddScoped<IEventAttendanceRepository, EventAttendanceRepository>();
             services.AddScoped<INotesRepository, NotesRepository>();
             services.AddScoped<IRatingTypeRepository, RatingTypeRepository>();
+            services.AddScoped<IRecruiterRepository, RecruiterRepository>();
+            services.AddScoped<IJobPostingRepository, JobPostingRepository>();
         }
     }
 }
