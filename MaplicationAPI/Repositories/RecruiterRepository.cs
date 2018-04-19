@@ -19,7 +19,7 @@ namespace MaplicationAPI.Repositories
         }
 
 
-        public List<Recruiter> BrowseRecruiter()
+        public List<Recruiter> BrowseRecruiters()
         {
             return _context.Recruiter
                     .AsNoTracking()
@@ -36,7 +36,7 @@ namespace MaplicationAPI.Repositories
                     .ToList();
         }
 
-        public List<Recruiter> GetRecruiterByCompanyId(int id)
+        public List<Recruiter> GetRecruitersByCompanyId(int id)
         {
             return _context.Recruiter
                     .AsNoTracking()

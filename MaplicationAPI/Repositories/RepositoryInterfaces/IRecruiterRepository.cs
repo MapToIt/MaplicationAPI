@@ -9,8 +9,8 @@ namespace MaplicationAPI.Repositories.RepositoryInterfaces
 {
     public interface IRecruiterRepository
     {
-        List<Recruiter> BrowseRecruiter();
-        List<Recruiter> GetRecruiterByCompanyId(int id);
+        List<Recruiter> BrowseRecruiters();
+        List<Recruiter> GetRecruitersByCompanyId(int id);
         Recruiter AddRecruiter(Recruiter newPosting);
         Recruiter UpdateRecruiter(Recruiter updatedJob);
         List<Recruiter> GetRecruiterByFilter(RecruiterFilter filter);
