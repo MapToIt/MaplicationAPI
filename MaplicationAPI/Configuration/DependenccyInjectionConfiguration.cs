@@ -20,6 +20,8 @@ namespace MaplicationAPI.Configuration
             services.AddScoped<IRatingTypeRepository, RatingTypeRepository>();
             services.AddScoped<IRecruiterRepository, RecruiterRepository>();
             services.AddScoped<IJobPostingRepository, JobPostingRepository>();
+            services.AddScoped<IEmploymentTypeRepository, EmploymentTypeRepository>();
+            services.AddScoped<ISalaryTypeRepository, SalaryTypeRepository>();
         }
     }
 }

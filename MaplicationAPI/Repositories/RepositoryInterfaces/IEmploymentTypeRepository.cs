@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MaplicationAPI.Repositories.RepositoryInterfaces
 {
-    public interface IStateRepository
+    public interface IEmploymentTypeRepository
     {
-        List<State> BrowseStates();
+        List<EmploymentTypes> BrowseEmploymentTypes();
     }
 }
