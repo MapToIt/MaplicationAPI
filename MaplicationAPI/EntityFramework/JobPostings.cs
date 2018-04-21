@@ -27,6 +27,6 @@ namespace MaplicationAPI.EntityFramework
         [ForeignKey("EmploymentTypeId")]
         public EmploymentTypes EmploymentType { get; set; }
         [ForeignKey("SalaryTypeId")]
-        public EmploymentTypes SalaryType { get; set; }
+        public SalaryTypes SalaryType { get; set; }
     }
 }

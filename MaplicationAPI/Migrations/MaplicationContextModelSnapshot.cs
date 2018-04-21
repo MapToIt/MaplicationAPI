@@ -429,7 +429,7 @@ namespace MaplicationAPI.Migrations
                         .HasForeignKey("EmploymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MaplicationAPI.EntityFramework.EmploymentTypes", "SalaryType")
+                    b.HasOne("MaplicationAPI.EntityFramework.SalaryTypes", "SalaryType")
                         .WithMany()
                         .HasForeignKey("SalaryTypeId");
                 });
