@@ -94,7 +94,7 @@ namespace MaplicationAPI.Repositories
 
         private void CheckJobPostings()
         {
-            DateTime now = new DateTime();
+            DateTime now = DateTime.Now;
 
             List<JobPostings> validJobs = _context.JobPostings
                                             .AsNoTracking()
@@ -105,11 +105,11 @@ namespace MaplicationAPI.Repositories
             {
                if (job.ValidThrough < now)
                 {
-                    job.Active = false;
+                    JobPostings invalidJob = _context.JobPostings.Where(x => x.JobId == job.JobId).FirstOrDefault();
+                    invalidJob.Active = false;
+                    _context.SaveChanges();
                 }
             }
-
-            _context.SaveChanges();
         }
     }
 }
