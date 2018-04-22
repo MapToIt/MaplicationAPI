@@ -16,11 +16,21 @@ namespace MaplicationAPI.EntityFramework
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string JobTitle { get; set; }
+        public string AlmaMater { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Photo { get; set; }
 
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
     }
 }

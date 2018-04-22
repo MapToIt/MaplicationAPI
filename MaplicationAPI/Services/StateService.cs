@@ -20,10 +20,5 @@ namespace MaplicationAPI.Services
         {
             return _StateRepository.BrowseStates();
         }
-
-        public Event GetEvent()
-        {
-            return _StateRepository.GetEvent();
-        }
     }
 }
